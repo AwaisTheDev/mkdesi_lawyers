@@ -32,46 +32,55 @@ export const practiceAreas = [
     title: "Commercial Law",
     description:
       "Practical advice for businesses — contracts, disputes, and commercial dealings handled with clarity and care.",
+    icon: "briefcase",
   },
   {
     title: "Criminal Law",
     description:
       "Early intervention and strong representation for police interviews, charges, and court matters.",
+    icon: "scales",
   },
   {
     title: "Family Law",
     description:
       "Sensitive guidance through separation, parenting arrangements, and property settlements.",
+    icon: "users",
   },
   {
     title: "Immigration Law",
     description:
       "Support navigating visas, citizenship, and matters involving Australian Border Force.",
+    icon: "globe",
   },
   {
     title: "Negotiations with Government Bodies",
     description:
       "Experienced advocacy when dealing with government agencies, regulators, and public bodies.",
+    icon: "building",
   },
   {
     title: "Power of Attorney",
     description:
       "Help deciding the right type of Power of Attorney and putting proper protections in place.",
+    icon: "signature",
   },
   {
     title: "Property & Conveyancing",
     description:
       "From purchase to settlement — clear conveyancing and property law support for buyers and sellers.",
+    icon: "home",
   },
   {
     title: "Tax Matters",
     description:
       "Guidance on tax-related legal issues, including dealings with the ATO and State Revenue.",
+    icon: "receipt",
   },
   {
     title: "Wills & Estate Planning",
     description:
       "Wills, probate, and estate planning so your wishes are clear and your family is protected.",
+    icon: "scroll",
   },
 ];
 
@@ -80,21 +89,25 @@ export const values = [
     title: "Friendly, experienced guidance",
     description:
       "We listen first, explain clearly, and walk beside you through every step of the legal process.",
+    icon: "handshake",
   },
   {
     title: "Cost-effective results",
     description:
       "High-quality advice delivered efficiently — so you get the outcome you need without unnecessary cost.",
+    icon: "coins",
   },
   {
     title: "Long-term relationships",
     description:
       "As life changes, we’re here for you. Many of our clients return because they trust how we work.",
+    icon: "link",
   },
   {
     title: "Experience-led advice",
     description:
       "Solid, objective counsel grounded in real courtroom and negotiation experience across practice areas.",
+    icon: "shield",
   },
 ];
 

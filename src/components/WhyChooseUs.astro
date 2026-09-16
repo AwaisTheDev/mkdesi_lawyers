@@ -1,4 +1,5 @@
 ---
+import Icon from "./Icon.astro";
 import { values } from "../data/site";
 ---
 
@@ -40,6 +41,9 @@ import { values } from "../data/site";
               i % 2 === 0 ? "reveal-delay-1" : "reveal-delay-2",
             ]}
           >
+            <span class="mb-4 flex h-10 w-10 items-center justify-center border border-gold/40 text-gold">
+              <Icon name={item.icon} class="h-5 w-5" />
+            </span>
             <h3 class="font-display text-xl font-semibold tracking-tight">
               {item.title}
             </h3>

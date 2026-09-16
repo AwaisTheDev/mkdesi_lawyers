@@ -1,4 +1,5 @@
 ---
+import Icon from "./Icon.astro";
 import { site } from "../data/site";
 ---
 
@@ -29,43 +30,58 @@ import { site } from "../data/site";
         </div>
 
         <dl class="reveal reveal-delay-3 mt-10 space-y-6">
-          <div>
-            <dt class="text-xs font-bold uppercase tracking-[0.14em] text-mist">
-              Address
-            </dt>
-            <dd class="mt-2 text-lg text-ink">
-              <a
-                href={site.address.mapsLink}
-                class="no-underline transition-colors hover:text-gold-deep"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {site.address.line1}<br />
-                {site.address.line2}
-              </a>
-            </dd>
+          <div class="flex gap-4">
+            <span class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center border border-gold/35 bg-gold/10 text-gold-deep">
+              <Icon name="mapPin" class="h-5 w-5" />
+            </span>
+            <div>
+              <dt class="text-xs font-bold uppercase tracking-[0.14em] text-mist">
+                Address
+              </dt>
+              <dd class="mt-2 text-lg text-ink">
+                <a
+                  href={site.address.mapsLink}
+                  class="no-underline transition-colors hover:text-gold-deep"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {site.address.line1}<br />
+                  {site.address.line2}
+                </a>
+              </dd>
+            </div>
           </div>
-          <div>
-            <dt class="text-xs font-bold uppercase tracking-[0.14em] text-mist">
-              Phone
-            </dt>
-            <dd class="mt-2 text-lg">
-              <a href={site.phoneHref} class="text-ink no-underline hover:text-gold-deep"
-                >{site.phone}</a
-              >
-            </dd>
+          <div class="flex gap-4">
+            <span class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center border border-gold/35 bg-gold/10 text-gold-deep">
+              <Icon name="phone" class="h-5 w-5" />
+            </span>
+            <div>
+              <dt class="text-xs font-bold uppercase tracking-[0.14em] text-mist">
+                Phone
+              </dt>
+              <dd class="mt-2 text-lg">
+                <a href={site.phoneHref} class="text-ink no-underline hover:text-gold-deep"
+                  >{site.phone}</a
+                >
+              </dd>
+            </div>
           </div>
-          <div>
-            <dt class="text-xs font-bold uppercase tracking-[0.14em] text-mist">
-              Email
-            </dt>
-            <dd class="mt-2 text-lg">
-              <a
-                href={site.emailHref}
-                class="text-ink no-underline hover:text-gold-deep"
-                >{site.email}</a
-              >
-            </dd>
+          <div class="flex gap-4">
+            <span class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center border border-gold/35 bg-gold/10 text-gold-deep">
+              <Icon name="mail" class="h-5 w-5" />
+            </span>
+            <div>
+              <dt class="text-xs font-bold uppercase tracking-[0.14em] text-mist">
+                Email
+              </dt>
+              <dd class="mt-2 text-lg">
+                <a
+                  href={site.emailHref}
+                  class="text-ink no-underline hover:text-gold-deep"
+                  >{site.email}</a
+                >
+              </dd>
+            </div>
           </div>
         </dl>
       </div>
