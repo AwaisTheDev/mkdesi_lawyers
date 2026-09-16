@@ -1,0 +1,178 @@
+---
+import { practiceAreas } from "../../data/site";
+
+const featured = practiceAreas.slice(0, 6);
+---
+
+<section class="c2-expertise" id="services">
+  <div class="c2-wrap">
+    <div class="c2-expertise-head">
+      <div>
+        <p class="c2-label c2-reveal">Expertise</p>
+        <h2 class="c2-display c2-expertise-title c2-reveal c2-d1">
+          Legal support<br />across every stage
+        </h2>
+      </div>
+      <div class="c2-expertise-side c2-reveal c2-d2">
+        <p>
+          From first advice to resolution — clear support across the matters
+          that shape your life and business.
+        </p>
+        <a href="#contact" class="c2-btn c2-btn-gold">
+          Contact Us
+          <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="c2-expertise-grid">
+      {
+        featured.map((area, i) => (
+          <a
+            href="#contact"
+            class:list={["c2-expertise-card", "c2-reveal", i % 3 === 1 && "c2-d1", i % 3 === 2 && "c2-d2"]}
+          >
+            <div class="c2-expertise-card-media">
+              <img
+                src={
+                  i % 3 === 0
+                    ? "/images/reception.webp"
+                    : i % 3 === 1
+                      ? "/images/team-collab.webp"
+                      : "/images/office-exterior.webp"
+                }
+                alt=""
+                loading="lazy"
+                width="800"
+                height="560"
+              />
+            </div>
+            <div class="c2-expertise-card-body">
+              <h3>{area.title}</h3>
+              <p>{area.description}</p>
+            </div>
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="c2-expertise-more c2-reveal">
+      <p class="c2-label">Also available</p>
+      <ul>
+        {
+          practiceAreas.slice(6).map((area) => (
+            <li>{area.title}</li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .c2-expertise {
+    background: var(--c2-navy);
+    padding: 5.5rem 0;
+  }
+  .c2-expertise-head {
+    display: grid;
+    gap: 1.75rem;
+    margin-bottom: 2.75rem;
+  }
+  .c2-expertise-title {
+    margin: 1rem 0 0;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.02;
+    font-weight: 550;
+    letter-spacing: -0.03em;
+  }
+  .c2-expertise-side {
+    max-width: 26rem;
+  }
+  .c2-expertise-side p {
+    margin: 0 0 1.25rem;
+    color: var(--c2-muted);
+    line-height: 1.65;
+  }
+  .c2-expertise-grid {
+    display: grid;
+    gap: 1rem;
+  }
+  .c2-expertise-card {
+    display: grid;
+    overflow: hidden;
+    border-radius: 1rem;
+    background: var(--c2-navy-soft);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    transition: transform 0.35s var(--c2-ease), border-color 0.35s var(--c2-ease);
+  }
+  .c2-expertise-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(177, 141, 85, 0.4);
+  }
+  .c2-expertise-card-media {
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+  }
+  .c2-expertise-card-media img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s var(--c2-ease);
+  }
+  .c2-expertise-card:hover img {
+    transform: scale(1.04);
+  }
+  .c2-expertise-card-body {
+    padding: 1.25rem 1.35rem 1.5rem;
+  }
+  .c2-expertise-card-body h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 650;
+  }
+  .c2-expertise-card-body p {
+    margin: 0.55rem 0 0;
+    color: var(--c2-muted);
+    font-size: 0.94rem;
+    line-height: 1.55;
+  }
+  .c2-expertise-more {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--c2-line);
+  }
+  .c2-expertise-more ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin: 0.9rem 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  .c2-expertise-more li {
+    padding: 0.55rem 0.9rem;
+    border-radius: 999px;
+    border: 1px solid rgba(177, 141, 85, 0.35);
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 0.82rem;
+  }
+  @media (min-width: 760px) {
+    .c2-expertise-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 980px) {
+    .c2-expertise {
+      padding: 7.5rem 0;
+    }
+    .c2-expertise-head {
+      grid-template-columns: 1.3fr 0.9fr;
+      align-items: end;
+      margin-bottom: 3.25rem;
+    }
+    .c2-expertise-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

@@ -1,0 +1,130 @@
+---
+import { values } from "../../data/site";
+---
+
+<section class="c2-approach" id="why-us">
+  <div class="c2-wrap">
+    <div class="c2-approach-head">
+      <div>
+        <p class="c2-label c2-reveal">Our approach</p>
+        <h2 class="c2-display c2-approach-title c2-reveal c2-d1">
+          Different by design
+        </h2>
+      </div>
+      <p class="c2-approach-lead c2-reveal c2-d2">
+        We listen first, explain clearly, and stay with you through every step —
+        measuring success by outcomes, not jargon.
+      </p>
+    </div>
+
+    <div class="c2-approach-layout">
+      <div class="c2-approach-visual c2-reveal">
+        <img
+          src="/images/reception-close.webp"
+          alt="Makdesi And Associates Lawyers reception"
+          width="2000"
+          height="1400"
+          loading="lazy"
+        />
+      </div>
+      <div class="c2-approach-list">
+        {
+          values.map((item, i) => (
+            <article class:list={["c2-approach-item", "c2-reveal", i % 2 === 1 && "c2-d1"]}>
+              <span class="c2-approach-index">{String(i + 1).padStart(2, "0")}</span>
+              <div>
+                <h3>{item.title}</h3>
+                <p>{item.description}</p>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .c2-approach {
+    background: var(--c2-paper);
+    color: var(--c2-navy);
+    padding: 5.5rem 0;
+  }
+  .c2-approach-head {
+    display: grid;
+    gap: 1.25rem;
+    margin-bottom: 2.75rem;
+  }
+  .c2-approach-title {
+    margin: 1rem 0 0;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.02;
+    font-weight: 550;
+    letter-spacing: -0.03em;
+  }
+  .c2-approach-lead {
+    margin: 0;
+    max-width: 28rem;
+    color: var(--c2-muted-dark);
+    line-height: 1.65;
+  }
+  .c2-approach-layout {
+    display: grid;
+    gap: 2rem;
+  }
+  .c2-approach-visual {
+    border-radius: 1rem;
+    overflow: hidden;
+  }
+  .c2-approach-visual img {
+    width: 100%;
+    height: 100%;
+    min-height: 280px;
+    object-fit: cover;
+  }
+  .c2-approach-list {
+    display: grid;
+    gap: 0;
+  }
+  .c2-approach-item {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    padding: 1.35rem 0;
+    border-top: 1px solid var(--c2-line-dark);
+  }
+  .c2-approach-item:last-child {
+    border-bottom: 1px solid var(--c2-line-dark);
+  }
+  .c2-approach-index {
+    color: var(--c2-gold);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    padding-top: 0.25rem;
+  }
+  .c2-approach-item h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    font-weight: 650;
+  }
+  .c2-approach-item p {
+    margin: 0.45rem 0 0;
+    color: var(--c2-muted-dark);
+    line-height: 1.6;
+  }
+  @media (min-width: 980px) {
+    .c2-approach {
+      padding: 7.5rem 0;
+    }
+    .c2-approach-head {
+      grid-template-columns: 1fr 1fr;
+      align-items: end;
+    }
+    .c2-approach-layout {
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 3rem;
+      align-items: center;
+    }
+  }
+</style>

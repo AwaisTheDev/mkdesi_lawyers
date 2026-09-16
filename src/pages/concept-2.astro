@@ -1,0 +1,33 @@
+---
+import Concept2Layout from "../layouts/Concept2Layout.astro";
+import Header from "../components/concept2/Header.astro";
+import Hero from "../components/concept2/Hero.astro";
+import About from "../components/concept2/About.astro";
+import Marquee from "../components/concept2/Marquee.astro";
+import Expertise from "../components/concept2/Expertise.astro";
+import Approach from "../components/concept2/Approach.astro";
+import Team from "../components/concept2/Team.astro";
+import Reviews from "../components/concept2/Reviews.astro";
+import Contact from "../components/concept2/Contact.astro";
+import Footer from "../components/concept2/Footer.astro";
+---
+
+<Concept2Layout>
+  <Header />
+  <main>
+    <Hero />
+    <About />
+    <Marquee />
+    <Expertise />
+    <Approach />
+    <Team />
+    <Reviews />
+    <Contact />
+  </main>
+  <Footer />
+
+  <nav class="c2-switcher" aria-label="Design concepts">
+    <a href="/">Concept 1</a>
+    <a href="/concept-2" class="is-active">Concept 2</a>
+  </nav>
+</Concept2Layout>

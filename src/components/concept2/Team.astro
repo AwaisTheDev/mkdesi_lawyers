@@ -1,0 +1,112 @@
+---
+import { team } from "../../data/site";
+---
+
+<section class="c2-team" id="team">
+  <div class="c2-wrap">
+    <div class="c2-team-head">
+      <p class="c2-label c2-reveal">Our people</p>
+      <h2 class="c2-display c2-team-title c2-reveal c2-d1">Meet the team</h2>
+      <p class="c2-team-lead c2-reveal c2-d2">
+        A dedicated group ready to listen and give objective advice when it
+        matters most.
+      </p>
+    </div>
+
+    <div class="c2-team-grid">
+      {
+        team.map((member, i) => (
+          <article class:list={["c2-team-card", "c2-reveal", i % 3 === 1 && "c2-d1", i % 3 === 2 && "c2-d2"]}>
+            <div class="c2-team-photo">
+              {member.photo ? (
+                <img
+                  src={member.photo}
+                  alt={`${member.name}, ${member.role}`}
+                  width="900"
+                  height="1200"
+                  loading="lazy"
+                />
+              ) : (
+                <div class="c2-team-fallback" aria-hidden="true">
+                  <span>{member.initials}</span>
+                </div>
+              )}
+            </div>
+            <h3>{member.name}</h3>
+            <p>{member.role}</p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .c2-team {
+    background: var(--c2-navy);
+    padding: 5.5rem 0;
+  }
+  .c2-team-head {
+    max-width: 36rem;
+    margin-bottom: 2.75rem;
+  }
+  .c2-team-title {
+    margin: 1rem 0 0;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    line-height: 1.02;
+    font-weight: 550;
+    letter-spacing: -0.03em;
+  }
+  .c2-team-lead {
+    margin: 1rem 0 0;
+    color: var(--c2-muted);
+    line-height: 1.65;
+  }
+  .c2-team-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .c2-team-photo {
+    aspect-ratio: 3 / 4;
+    border-radius: 0.9rem;
+    overflow: hidden;
+    background: var(--c2-navy-mid);
+    margin-bottom: 0.9rem;
+  }
+  .c2-team-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  .c2-team-fallback {
+    width: 100%;
+    height: 100%;
+    display: grid;
+    place-items: center;
+    background: linear-gradient(145deg, var(--c2-navy-mid), var(--c2-navy));
+    color: rgba(177, 141, 85, 0.35);
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 2.5rem;
+  }
+  .c2-team-card h3 {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 650;
+  }
+  .c2-team-card p {
+    margin: 0.25rem 0 0;
+    color: var(--c2-gold);
+    font-size: 0.84rem;
+  }
+  @media (min-width: 900px) {
+    .c2-team {
+      padding: 7.5rem 0;
+    }
+    .c2-team-grid {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1.15rem;
+    }
+  }
+</style>

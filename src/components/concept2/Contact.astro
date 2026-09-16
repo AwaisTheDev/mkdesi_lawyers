@@ -1,0 +1,166 @@
+---
+import { practiceAreas, site } from "../../data/site";
+---
+
+<section class="c2-contact" id="contact">
+  <div class="c2-wrap c2-contact-grid">
+    <div>
+      <p class="c2-label c2-reveal">Get in touch</p>
+      <h2 class="c2-display c2-contact-title c2-reveal c2-d1">
+        Ready when you need advice
+      </h2>
+      <p class="c2-contact-lead c2-reveal c2-d2">
+        Send an enquiry or call us on{" "}
+        <a href={site.phoneHref}>{site.phone}</a>. We’re based at{" "}
+        {site.address.full}.
+      </p>
+
+      <div class="c2-contact-visual c2-reveal c2-d3">
+        <img
+          src="/images/office-exterior.webp"
+          alt="Makdesi And Associates Lawyers at 705 Sydney Road, Brunswick"
+          width="1600"
+          height="2400"
+          loading="lazy"
+        />
+      </div>
+    </div>
+
+    <form
+      class="c2-form c2-reveal c2-d2"
+      action={`mailto:${site.email}`}
+      method="post"
+      enctype="text/plain"
+      id="location"
+    >
+      <label>
+        <span>Full name</span>
+        <input type="text" name="name" required autocomplete="name" />
+      </label>
+      <label>
+        <span>Email</span>
+        <input type="email" name="email" required autocomplete="email" />
+      </label>
+      <label>
+        <span>Phone</span>
+        <input type="tel" name="phone" autocomplete="tel" />
+      </label>
+      <label>
+        <span>Practice area</span>
+        <select name="practice_area" required>
+          <option value="" disabled selected>Select a practice area</option>
+          {
+            practiceAreas.map((area) => (
+              <option value={area.title}>{area.title}</option>
+            ))
+          }
+          <option value="Other">Other / Not sure</option>
+        </select>
+      </label>
+      <label class="is-full">
+        <span>Message</span>
+        <textarea name="message" rows="5" required></textarea>
+      </label>
+      <button type="submit" class="c2-btn c2-btn-gold is-full">
+        Send enquiry
+        <span aria-hidden="true">↗</span>
+      </button>
+    </form>
+  </div>
+</section>
+
+<style>
+  .c2-contact {
+    background: var(--c2-navy);
+    padding: 5.5rem 0;
+  }
+  .c2-contact-grid {
+    display: grid;
+    gap: 2.5rem;
+  }
+  .c2-contact-title {
+    margin: 1rem 0 0;
+    font-size: clamp(2.2rem, 5vw, 3.8rem);
+    line-height: 1.05;
+    font-weight: 550;
+    letter-spacing: -0.03em;
+  }
+  .c2-contact-lead {
+    margin: 1.1rem 0 0;
+    max-width: 30rem;
+    color: var(--c2-muted);
+    line-height: 1.65;
+  }
+  .c2-contact-lead a {
+    color: var(--c2-gold);
+  }
+  .c2-contact-visual {
+    margin-top: 2rem;
+    border-radius: 1rem;
+    overflow: hidden;
+    max-width: 26rem;
+  }
+  .c2-contact-visual img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  .c2-form {
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+  .c2-form label {
+    display: grid;
+    gap: 0.45rem;
+  }
+  .c2-form label span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.5);
+  }
+  .c2-form input,
+  .c2-form select,
+  .c2-form textarea {
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    background: rgba(2, 22, 43, 0.45);
+    color: #fff;
+    border-radius: 0.55rem;
+    padding: 0.9rem 1rem;
+    font: inherit;
+    outline: none;
+  }
+  .c2-form input:focus,
+  .c2-form select:focus,
+  .c2-form textarea:focus {
+    border-color: var(--c2-gold);
+  }
+  .c2-form select option {
+    background: var(--c2-navy);
+  }
+  .c2-form .is-full {
+    grid-column: 1 / -1;
+  }
+  @media (min-width: 760px) {
+    .c2-form {
+      grid-template-columns: 1fr 1fr;
+      padding: 1.75rem;
+    }
+  }
+  @media (min-width: 980px) {
+    .c2-contact {
+      padding: 7.5rem 0;
+    }
+    .c2-contact-grid {
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 4rem;
+      align-items: start;
+    }
+  }
+</style>

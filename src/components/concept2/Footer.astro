@@ -1,0 +1,123 @@
+---
+import { nav, site } from "../../data/site";
+---
+
+<footer class="c2-footer">
+  <div class="c2-wrap c2-footer-top">
+    <div>
+      <a href="#top" class="c2-footer-logo" aria-label={site.name}>
+        <img src="/logo.png" alt="" width="240" height="80" />
+      </a>
+      <p>{site.tagline}</p>
+    </div>
+    <div>
+      <h2>Quick links</h2>
+      <ul>
+        {
+          nav.map((item) => (
+            <li>
+              <a href={item.href}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <h2>Contact</h2>
+      <ul>
+        <li>
+          <a href={site.address.mapsLink} target="_blank" rel="noopener noreferrer"
+            >{site.address.full}</a
+          >
+        </li>
+        <li><a href={site.phoneHref}>{site.phone}</a></li>
+        <li><a href={site.emailHref}>{site.email}</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="c2-wrap c2-footer-bottom">
+    <p>
+      © {new Date().getFullYear()} {site.name}. Liability limited by a scheme
+      approved under Professional Standards Legislation.
+    </p>
+    <p class="c2-credit">
+      Web development and Design by{" "}
+      <a
+        href="https://www.atlanticmediagroup.com.au"
+        target="_blank"
+        rel="noopener noreferrer"
+        >www.atlanticmediagroup.com.au</a
+      >
+    </p>
+  </div>
+</footer>
+
+<style>
+  .c2-footer {
+    background: #010e1c;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 3.5rem 0 0;
+  }
+  .c2-footer-top {
+    display: grid;
+    gap: 2rem;
+    padding-bottom: 2.5rem;
+  }
+  .c2-footer-logo img {
+    height: 3rem;
+    width: auto;
+    mix-blend-mode: screen;
+  }
+  .c2-footer-top p {
+    margin: 1rem 0 0;
+    max-width: 22rem;
+    color: var(--c2-muted);
+    line-height: 1.6;
+  }
+  .c2-footer-top h2 {
+    margin: 0 0 0.9rem;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.4);
+  }
+  .c2-footer-top ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.55rem;
+  }
+  .c2-footer-top a {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.92rem;
+  }
+  .c2-footer-top a:hover {
+    color: var(--c2-gold);
+  }
+  .c2-footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 1.25rem 0 1.75rem;
+  }
+  .c2-footer-bottom p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.38);
+    font-size: 0.78rem;
+    line-height: 1.5;
+  }
+  .c2-footer-bottom .c2-credit {
+    margin-top: 0.55rem;
+  }
+  .c2-footer-bottom .c2-credit a {
+    color: rgba(255, 255, 255, 0.55);
+  }
+  .c2-footer-bottom .c2-credit a:hover {
+    color: var(--c2-gold);
+  }
+  @media (min-width: 860px) {
+    .c2-footer-top {
+      grid-template-columns: 1.4fr 0.8fr 1fr;
+      gap: 3rem;
+    }
+  }
+</style>
