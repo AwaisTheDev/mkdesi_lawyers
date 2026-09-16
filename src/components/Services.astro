@@ -1,0 +1,45 @@
+---
+import { practiceAreas } from "../data/site";
+---
+
+<section id="services" class="bg-paper py-24 md:py-32">
+  <div class="mx-auto max-w-7xl px-5 md:px-8">
+    <div class="max-w-2xl">
+      <p class="section-label reveal">Our services</p>
+      <h2
+        class="reveal reveal-delay-1 mt-5 font-display text-4xl leading-tight font-semibold tracking-tight text-ink md:text-5xl"
+      >
+        Practice areas we handle with care
+      </h2>
+      <p class="reveal reveal-delay-2 mt-5 text-lg leading-relaxed text-slate">
+        From first advice to resolution — clear support across the matters that
+        shape your life and business.
+      </p>
+    </div>
+
+    <div class="mt-14 grid gap-px bg-line-dark sm:grid-cols-2 lg:grid-cols-3">
+      {
+        practiceAreas.map((area, i) => (
+          <article
+            class:list={[
+              "reveal group bg-paper p-7 transition-colors hover:bg-cream md:p-8",
+              i < 3 && "reveal-delay-1",
+              i >= 3 && i < 6 && "reveal-delay-2",
+              i >= 6 && "reveal-delay-3",
+            ]}
+          >
+            <span class="font-display text-sm text-gold-deep">
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <h3 class="mt-4 font-display text-2xl font-semibold tracking-tight text-ink">
+              {area.title}
+            </h3>
+            <p class="mt-3 text-[0.95rem] leading-relaxed text-slate">
+              {area.description}
+            </p>
+          </article>
+        ))
+      }
+    </div>
+  </div>
+</section>

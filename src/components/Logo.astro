@@ -1,0 +1,15 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "h-11 w-auto sm:h-12 md:h-14" } = Astro.props;
+---
+
+<img
+  src="/logo.png"
+  alt="Makdesi And Associates Lawyers"
+  class:list={["block max-w-none object-contain mix-blend-screen", className]}
+  width="480"
+  height="160"
+/>
