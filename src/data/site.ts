@@ -10,21 +10,72 @@ export const site = {
     line1: "705 Sydney Road",
     line2: "Brunswick VIC 3056",
     full: "705 Sydney Road, Brunswick VIC 3056",
-    mapsEmbed:
-      "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3154.2!2d144.9608!3d-37.7665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad6432f5c5c5c5c%3A0x0!2s705%20Sydney%20Rd%2C%20Brunswick%20VIC%203056!5e0!3m2!1sen!2sau!4v1700000000000!5m2!1sen!2sau",
     mapsLink:
       "https://www.google.com/maps/search/?api=1&query=705+Sydney+Road+Brunswick+VIC+3056",
   },
 };
 
 export const nav = [
-  { label: "Home", href: "#top" },
-  { label: "About Us", href: "#about" },
-  { label: "Our Lawyers", href: "#team" },
-  { label: "Our Services", href: "#services" },
-  { label: "Our Location", href: "#location" },
-  { label: "Client Reviews", href: "#reviews" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "About", href: "#about" },
+  { label: "Areas of Law", href: "#services" },
+  { label: "Resources", href: "#team" },
+  { label: "Reviews", href: "#reviews" },
+  { label: "Contact", href: "#contact" },
+];
+
+export const trustItems = [
+  {
+    title: "Experienced",
+    description: "Trusted legal guidance across a wide range of matters.",
+    icon: "scales",
+  },
+  {
+    title: "Client Focused",
+    description: "Personalised advice and practical solutions.",
+    icon: "shield",
+  },
+  {
+    title: "Local Experts",
+    description: "Proudly based in Melbourne.",
+    icon: "mapPin",
+  },
+  {
+    title: "Result Driven",
+    description: "Committed to the best outcomes for our clients.",
+    icon: "target",
+  },
+];
+
+/** Featured homepage cards matching the concept layout */
+export const featuredAreas = [
+  {
+    title: "Business & Commercial",
+    description:
+      "Contracts, disputes and commercial advice for businesses of all sizes.",
+    image: "/images/team-collab.webp",
+    href: "#contact",
+  },
+  {
+    title: "Property",
+    description:
+      "Conveyancing, property transactions and related legal support.",
+    image: "/images/office-exterior.webp",
+    href: "#contact",
+  },
+  {
+    title: "Family & Personal",
+    description:
+      "Family law, wills, estates and personal legal matters handled with care.",
+    image: "/images/consultation.webp",
+    href: "#contact",
+  },
+  {
+    title: "Disputes & Legal Matters",
+    description:
+      "Criminal, immigration, tax and negotiations with government bodies.",
+    image: "/images/reception-close.webp",
+    href: "#contact",
+  },
 ];
 
 export const practiceAreas = [
@@ -84,33 +135,6 @@ export const practiceAreas = [
   },
 ];
 
-export const values = [
-  {
-    title: "Friendly, experienced guidance",
-    description:
-      "We listen first, explain clearly, and walk beside you through every step of the legal process.",
-    icon: "handshake",
-  },
-  {
-    title: "Cost-effective results",
-    description:
-      "High-quality advice delivered efficiently — so you get the outcome you need without unnecessary cost.",
-    icon: "coins",
-  },
-  {
-    title: "Long-term relationships",
-    description:
-      "As life changes, we’re here for you. Many of our clients return because they trust how we work.",
-    icon: "link",
-  },
-  {
-    title: "Experience-led advice",
-    description:
-      "Solid, objective counsel grounded in real courtroom and negotiation experience across practice areas.",
-    icon: "shield",
-  },
-];
-
 export const team = [
   {
     name: "Mary Makdesi",
@@ -119,26 +143,10 @@ export const team = [
     photo: "/images/mary.webp",
   },
   {
-    name: "Natascia",
-    role: "Lawyer",
-    initials: "N",
-    photo: "/images/natascia.webp",
-  },
-  {
     name: "Clara Gallo",
     role: "Legal Secretary",
     initials: "CG",
     photo: "/images/clara.webp",
-  },
-  {
-    name: "Paul Villani",
-    role: "Lawyer",
-    initials: "PV",
-  },
-  {
-    name: "Christine Diab",
-    role: "Lawyer",
-    initials: "CD",
   },
 ];
 

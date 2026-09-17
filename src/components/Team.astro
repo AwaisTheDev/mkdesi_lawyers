@@ -2,67 +2,46 @@
 import { team } from "../data/site";
 ---
 
-<section id="team" class="bg-cream py-24 md:py-32">
-  <div class="mx-auto max-w-7xl px-5 md:px-8">
-    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
-      <div class="max-w-xl">
-        <p class="section-label reveal">Our people</p>
-        <h2
-          class="reveal reveal-delay-1 mt-5 font-display text-4xl leading-tight font-semibold tracking-tight text-ink md:text-5xl"
-        >
-          Meet the team
-        </h2>
-        <p class="reveal reveal-delay-2 mt-5 text-lg leading-relaxed text-slate">
-          A dedicated group of lawyers and support staff ready to listen and
-          give objective advice when it matters most.
-        </p>
-      </div>
+<section id="team" class="bg-navy py-20 text-white md:py-28">
+  <div class="mx-auto grid max-w-7xl items-center gap-12 px-5 md:grid-cols-12 md:gap-16 md:px-8">
+    <div class="md:col-span-4">
+      <h2
+        class="reveal font-display text-4xl font-semibold tracking-tight md:text-5xl"
+      >
+        Meet Our Team
+      </h2>
+      <p class="reveal reveal-delay-1 mt-5 max-w-sm text-base leading-relaxed text-white/65">
+        A dedicated team ready to listen and give clear, objective advice when
+        it matters most — led by Principal Mary Makdesi.
+      </p>
+      <a href="#contact" class="btn-gold reveal reveal-delay-2 mt-8">
+        Meet the Team
+      </a>
     </div>
 
-    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+    <div class="grid gap-6 sm:grid-cols-2 md:col-span-8">
       {
         team.map((member, i) => (
           <article
             class:list={[
-              "reveal group",
+              "reveal",
               i === 1 && "reveal-delay-1",
-              i === 2 && "reveal-delay-2",
-              i >= 3 && "reveal-delay-3",
             ]}
           >
-            <div
-              class="relative flex aspect-[3/4] items-end overflow-hidden bg-ink-soft"
-            >
+            <div class="overflow-hidden border border-white/15 bg-navy-soft">
               {member.photo ? (
                 <img
                   src={member.photo}
                   alt={`${member.name}, ${member.role}`}
-                  class="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                  class="aspect-[4/5] w-full object-cover object-top"
                   width="900"
-                  height="1200"
+                  height="1125"
                   loading="lazy"
                 />
-              ) : (
-                <>
-                  <div
-                    class="absolute inset-0 bg-gradient-to-br from-slate via-ink-soft to-ink"
-                    aria-hidden="true"
-                  />
-                  <span
-                    class="absolute inset-0 flex items-center justify-center font-display text-6xl font-semibold text-white/15"
-                    aria-hidden="true"
-                  >
-                    {member.initials}
-                  </span>
-                </>
-              )}
-              <div class="relative z-10 w-full bg-gradient-to-t from-ink via-ink/80 to-transparent p-5 pt-16">
-                <h3 class="font-display text-xl font-semibold text-white">
-                  {member.name}
-                </h3>
-                <p class="mt-1 text-sm tracking-wide text-gold">{member.role}</p>
-              </div>
+              ) : null}
             </div>
+            <h3 class="mt-4 font-display text-xl font-semibold">{member.name}</h3>
+            <p class="mt-1 text-sm tracking-wide text-gold">{member.role}</p>
           </article>
         ))
       }

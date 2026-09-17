@@ -1,72 +1,42 @@
 ---
-import { site } from "../data/site";
 ---
 
-<section
-  id="top"
-  class="relative flex min-h-[100svh] items-end overflow-hidden bg-ink text-white"
->
+<section id="top" class="relative flex min-h-[88svh] items-end overflow-hidden bg-navy pt-20 text-white md:min-h-[92svh]">
   <div class="absolute inset-0">
     <img
-      src="/images/consultation.webp"
+      src="https://images.unsplash.com/photo-1515542706656-8e6ef17a1521?auto=format&fit=crop&w=2400&q=80"
       alt=""
-      class="h-full w-full object-cover object-[center_25%]"
-      width="2000"
-      height="1400"
+      class="h-full w-full object-cover object-center"
+      width="2400"
+      height="1600"
       fetchpriority="high"
     />
     <div
-      class="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/35"
+      class="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/35"
     >
     </div>
     <div
-      class="absolute inset-0 bg-gradient-to-t from-ink via-transparent to-ink/40"
+      class="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-navy/30"
     >
     </div>
-    <div class="hero-noise pointer-events-none absolute inset-0 opacity-[0.06]" aria-hidden="true"></div>
   </div>
 
-  <div
-    class="relative z-10 mx-auto w-full max-w-7xl px-5 pb-16 pt-36 md:px-8 md:pb-24 md:pt-44"
-  >
-    <p
-      class="mb-5 text-[0.75rem] font-semibold uppercase tracking-[0.2em] text-gold"
-    >
-      Brunswick · Melbourne
-    </p>
-    <h1
-      class="max-w-4xl font-display text-[clamp(2.6rem,7vw,5.4rem)] leading-[1.02] font-semibold tracking-tight text-balance"
-    >
-      {site.shortName}
-      <span class="mt-1 block font-normal text-white/80"
-        >& Associates Lawyers</span
+  <div class="relative z-10 mx-auto w-full max-w-7xl px-5 pb-16 pt-24 md:px-8 md:pb-24">
+    <div class="max-w-2xl">
+      <h1
+        class="font-display text-[clamp(2.4rem,5.5vw,4.4rem)] leading-[1.08] font-semibold tracking-tight text-balance"
       >
-    </h1>
-    <p
-      class="mt-6 max-w-xl text-lg leading-relaxed text-white/75 md:text-xl"
-    >
-      {site.tagline}. Friendly, experienced guidance through life’s legal
-      matters — delivered efficiently and cost-effectively.
-    </p>
-    <div class="mt-10 flex flex-wrap items-center gap-4">
-      <a href="#contact" class="btn-primary">
-        Contact Us
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-          <path
-            d="M3 8h10M9 4l4 4-4 4"
-            stroke="currentColor"
-            stroke-width="1.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"></path>
-        </svg>
-      </a>
-      <a href="#services" class="btn-ghost">Our Services</a>
+        Experienced Legal Guidance.<br />
+        When You Need It Most.
+      </h1>
+      <p class="mt-6 max-w-lg text-base leading-relaxed text-white/75 md:text-lg">
+        Clear, practical legal solutions for individuals and businesses —
+        delivered with care, experience and a focus on the outcomes that matter.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="#contact" class="btn-gold">Speak with Mary</a>
+        <a href="#services" class="btn-outline-light">Our Areas of Law</a>
+      </div>
     </div>
   </div>
 </section>
-
-<style>
-  .hero-noise {
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  }
-</style>

@@ -1,48 +1,57 @@
 ---
-import Icon from "./Icon.astro";
-import { practiceAreas } from "../data/site";
+import { featuredAreas } from "../data/site";
 ---
 
-<section id="services" class="bg-paper py-24 md:py-32">
+<section id="services" class="bg-cream py-20 md:py-28">
   <div class="mx-auto max-w-7xl px-5 md:px-8">
-    <div class="max-w-2xl">
-      <p class="section-label reveal">Our services</p>
+    <div class="mx-auto max-w-2xl text-center">
       <h2
-        class="reveal reveal-delay-1 mt-5 font-display text-4xl leading-tight font-semibold tracking-tight text-ink md:text-5xl"
+        class="reveal font-display text-4xl font-semibold tracking-tight text-navy md:text-5xl"
       >
-        Practice areas we handle with care
+        Our Areas of Law
       </h2>
-      <p class="reveal reveal-delay-2 mt-5 text-lg leading-relaxed text-slate">
-        From first advice to resolution — clear support across the matters that
-        shape your life and business.
+      <p class="reveal reveal-delay-1 mt-4 text-base leading-relaxed text-slate md:text-lg">
+        Practical legal support across the matters that shape your life and
+        business — from first advice through to resolution.
       </p>
     </div>
 
-    <div class="mt-14 grid gap-px bg-line-dark sm:grid-cols-2 lg:grid-cols-3">
+    <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {
-        practiceAreas.map((area, i) => (
+        featuredAreas.map((area, i) => (
           <article
             class:list={[
-              "reveal group bg-paper p-7 transition-colors hover:bg-cream md:p-8",
-              i < 3 && "reveal-delay-1",
-              i >= 3 && i < 6 && "reveal-delay-2",
-              i >= 6 && "reveal-delay-3",
+              "reveal group flex flex-col bg-white",
+              i === 1 && "reveal-delay-1",
+              i === 2 && "reveal-delay-2",
+              i === 3 && "reveal-delay-3",
             ]}
           >
-            <div class="flex items-start justify-between gap-4">
-              <span class="flex h-11 w-11 items-center justify-center border border-gold/35 bg-gold/10 text-gold-deep transition-colors group-hover:border-gold group-hover:bg-gold/20">
-                <Icon name={area.icon} class="h-5 w-5" />
-              </span>
-              <span class="font-display text-sm text-gold-deep">
-                {String(i + 1).padStart(2, "0")}
-              </span>
+            <div class="aspect-[4/3] overflow-hidden">
+              <img
+                src={area.image}
+                alt=""
+                class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                width="800"
+                height="600"
+                loading="lazy"
+              />
             </div>
-            <h3 class="mt-5 font-display text-2xl font-semibold tracking-tight text-ink">
-              {area.title}
-            </h3>
-            <p class="mt-3 text-[0.95rem] leading-relaxed text-slate">
-              {area.description}
-            </p>
+            <div class="flex flex-1 flex-col p-5 md:p-6">
+              <h3 class="font-display text-xl font-semibold text-navy">
+                {area.title}
+              </h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-slate">
+                {area.description}
+              </p>
+              <a
+                href={area.href}
+                class="mt-5 inline-flex items-center gap-1.5 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-gold no-underline transition-colors hover:text-gold-deep"
+              >
+                Learn more
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
           </article>
         ))
       }
