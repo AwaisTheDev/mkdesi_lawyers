@@ -1,7 +1,7 @@
 ---
 interface Props {
   class?: string;
-  /** on-light = dark logo for white backgrounds */
+  /** on-light = dark logo for white backgrounds; on-dark = white logo */
   variant?: "on-dark" | "on-light";
 }
 
@@ -16,9 +16,9 @@ const {
   alt="Makdesi And Associates Lawyers"
   class:list={[
     "block max-w-none object-contain",
-    variant === "on-dark" ? "mix-blend-screen" : "brightness-0",
+    variant === "on-light" && "brightness-0",
     className,
   ]}
-  width="480"
-  height="160"
+  width="487"
+  height="108"
 />
