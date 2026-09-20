@@ -1,8 +1,10 @@
 ---
-import { site, nav } from "../data/site";
+import { site, nav, practiceAreas } from "../data/site";
 import Logo from "./Logo.astro";
+import Icon from "./Icon.astro";
 
 const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
+const servicesActive = pathname === "/services" || pathname.startsWith("/services/");
 
 function isActive(href: string) {
   if (href === "/") return pathname === "/";
@@ -23,25 +25,140 @@ function isActive(href: string) {
 
     <nav class="hidden items-center gap-1 lg:flex" aria-label="Primary">
       {
-        nav.map((item) => (
-          <a
-            href={item.href}
-            class:list={[
-              "px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] no-underline transition-colors",
-              isActive(item.href)
-                ? "text-navy"
-                : "text-navy/70 hover:text-navy",
-            ]}
-            aria-current={isActive(item.href) ? "page" : undefined}
-          >
-            {item.label}
-          </a>
-        ))
+        nav.map((item) =>
+          item.href === "/services" ? (
+            <div class="group/nav relative">
+              <a
+                href="/services"
+                class:list={[
+                  "inline-flex items-center gap-1.5 px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] no-underline transition-colors",
+                  servicesActive ? "text-navy" : "text-navy/70 hover:text-navy",
+                ]}
+                aria-current={servicesActive ? "page" : undefined}
+                aria-haspopup="true"
+              >
+                {item.label}
+                <svg
+                  class="h-3 w-3 transition-transform duration-200 group-hover/nav:rotate-180 group-focus-within/nav:rotate-180"
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  aria-hidden="true"
+                >
+                  <path d="M2.5 4.5 6 8l3.5-3.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </a>
+              <div
+                class="invisible absolute left-1/2 top-full z-50 w-72 -translate-x-1/2 pt-2 opacity-0 transition-all duration-200 group-hover/nav:visible group-hover/nav:opacity-100 group-focus-within/nav:visible group-focus-within/nav:opacity-100"
+              >
+                <div class="border border-navy/10 bg-white py-2 shadow-sm">
+                  <a
+                    href="/services"
+                    class="block px-4 py-2.5 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-gold no-underline hover:bg-cream"
+                  >
+                    View all areas
+                  </a>
+                  <div class="my-1 border-t border-navy/8"></div>
+                  {
+                    practiceAreas.map((area) => {
+                      const areaHref = `/services/${area.slug}`;
+                      const areaActive = pathname === areaHref || pathname.startsWith(`${areaHref}/`);
+                      const hasChildren = (area.children?.length ?? 0) > 0;
+
+                      if (!hasChildren) {
+                        return (
+                          <a
+                            href={areaHref}
+                            class:list={[
+                              "block px-4 py-2.5 text-sm no-underline transition-colors hover:bg-cream hover:text-navy",
+                              areaActive ? "font-semibold text-navy" : "text-navy/75",
+                            ]}
+                          >
+                            {area.title}
+                          </a>
+                        );
+                      }
+
+                      return (
+                        <div class="group/sub relative">
+                          <a
+                            href={areaHref}
+                            class:list={[
+                              "flex items-center justify-between gap-3 px-4 py-2.5 text-sm no-underline transition-colors hover:bg-cream hover:text-navy",
+                              areaActive ? "font-semibold text-navy" : "text-navy/75",
+                            ]}
+                            aria-haspopup="true"
+                          >
+                            <span>{area.title}</span>
+                            <svg
+                              class="h-3 w-3 shrink-0 text-navy/40"
+                              viewBox="0 0 12 12"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-width="1.75"
+                              aria-hidden="true"
+                            >
+                              <path d="M4.5 2.5 8 6l-3.5 3.5" stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                          </a>
+                          <div
+                            class="invisible absolute top-0 left-full z-50 w-72 pl-1 opacity-0 transition-all duration-200 group-hover/sub:visible group-hover/sub:opacity-100 group-focus-within/sub:visible group-focus-within/sub:opacity-100"
+                          >
+                            <div class="border border-navy/10 bg-white py-2 shadow-sm">
+                              <a
+                                href={areaHref}
+                                class="block px-4 py-2.5 text-[0.7rem] font-bold uppercase tracking-[0.12em] text-gold no-underline hover:bg-cream"
+                              >
+                                Overview
+                              </a>
+                              <div class="my-1 border-t border-navy/8"></div>
+                              {area.children!.map((child) => {
+                                const childHref = `${areaHref}/${child.slug}`;
+                                return (
+                                  <a
+                                    href={childHref}
+                                    class:list={[
+                                      "block px-4 py-2.5 text-sm leading-snug no-underline transition-colors hover:bg-cream hover:text-navy",
+                                      pathname === childHref
+                                        ? "font-semibold text-navy"
+                                        : "text-navy/75",
+                                    ]}
+                                  >
+                                    {child.title}
+                                  </a>
+                                );
+                              })}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })
+                  }
+                </div>
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              class:list={[
+                "px-3 py-2 text-[0.72rem] font-semibold uppercase tracking-[0.12em] no-underline transition-colors",
+                isActive(item.href)
+                  ? "text-navy"
+                  : "text-navy/70 hover:text-navy",
+              ]}
+              aria-current={isActive(item.href) ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          ),
+        )
       }
     </nav>
 
     <div class="flex items-center gap-3">
       <a href={site.phoneHref} class="btn-gold hidden sm:inline-flex">
+        <Icon name="phone" class="h-4 w-4" />
         Call {site.phone}
       </a>
       <button
@@ -64,20 +181,110 @@ function isActive(href: string) {
   <div id="mobile-menu" class="hidden border-t border-navy/8 bg-white lg:hidden">
     <nav class="mx-auto flex max-w-7xl flex-col px-5 py-3" aria-label="Mobile">
       {
-        nav.map((item) => (
-          <a
-            href={item.href}
-            class:list={[
-              "mobile-link border-b border-navy/8 py-3.5 text-sm font-semibold uppercase tracking-[0.1em] no-underline",
-              isActive(item.href) ? "text-navy" : "text-navy/80",
-            ]}
-            aria-current={isActive(item.href) ? "page" : undefined}
-          >
-            {item.label}
-          </a>
-        ))
+        nav.map((item) =>
+          item.href === "/services" ? (
+            <div class="border-b border-navy/8">
+              <button
+                type="button"
+                id="mobile-services-toggle"
+                class="flex w-full items-center justify-between py-3.5 text-left text-sm font-semibold uppercase tracking-[0.1em] text-navy"
+                aria-expanded="false"
+                aria-controls="mobile-services-menu"
+              >
+                {item.label}
+                <svg
+                  class="h-4 w-4 text-navy/60 transition-transform duration-200"
+                  data-chevron
+                  viewBox="0 0 12 12"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  aria-hidden="true"
+                >
+                  <path d="M2.5 4.5 6 8l3.5-3.5" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+              </button>
+              <div id="mobile-services-menu" class="hidden pb-3 pl-1">
+                <a
+                  href="/services"
+                  class="mobile-link block py-2.5 text-sm font-semibold text-gold no-underline"
+                >
+                  View all areas
+                </a>
+                {
+                  practiceAreas.map((area) => {
+                    const areaHref = `/services/${area.slug}`;
+                    const hasChildren = (area.children?.length ?? 0) > 0;
+
+                    if (!hasChildren) {
+                      return (
+                        <a
+                          href={areaHref}
+                          class="mobile-link block py-2.5 text-sm text-navy/80 no-underline"
+                        >
+                          {area.title}
+                        </a>
+                      );
+                    }
+
+                    return (
+                      <div class="border-t border-navy/6 first:border-t-0">
+                        <button
+                          type="button"
+                          class="mobile-area-toggle flex w-full items-center justify-between py-2.5 text-left text-sm font-medium text-navy"
+                          aria-expanded="false"
+                        >
+                          {area.title}
+                          <svg
+                            class="h-3.5 w-3.5 text-navy/50 transition-transform duration-200"
+                            data-chevron
+                            viewBox="0 0 12 12"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="1.75"
+                            aria-hidden="true"
+                          >
+                            <path d="M2.5 4.5 6 8l3.5-3.5" stroke-linecap="round" stroke-linejoin="round" />
+                          </svg>
+                        </button>
+                        <div class="mobile-area-menu hidden pb-2 pl-3">
+                          <a
+                            href={areaHref}
+                            class="mobile-link block py-2 text-sm font-semibold text-gold no-underline"
+                          >
+                            Overview
+                          </a>
+                          {area.children!.map((child) => (
+                            <a
+                              href={`${areaHref}/${child.slug}`}
+                              class="mobile-link block py-2 text-sm text-navy/75 no-underline"
+                            >
+                              {child.title}
+                            </a>
+                          ))}
+                        </div>
+                      </div>
+                    );
+                  })
+                }
+              </div>
+            </div>
+          ) : (
+            <a
+              href={item.href}
+              class:list={[
+                "mobile-link border-b border-navy/8 py-3.5 text-sm font-semibold uppercase tracking-[0.1em] no-underline",
+                isActive(item.href) ? "text-navy" : "text-navy/80",
+              ]}
+              aria-current={isActive(item.href) ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          ),
+        )
       }
       <a href={site.phoneHref} class="btn-gold mt-4 self-start">
+        <Icon name="phone" class="h-4 w-4" />
         Call {site.phone}
       </a>
     </nav>
@@ -88,6 +295,8 @@ function isActive(href: string) {
   const header = document.getElementById("site-header");
   const toggle = document.getElementById("menu-toggle");
   const menu = document.getElementById("mobile-menu");
+  const servicesToggle = document.getElementById("mobile-services-toggle");
+  const servicesMenu = document.getElementById("mobile-services-menu");
 
   const onScroll = () => {
     if (!header) return;
@@ -99,6 +308,24 @@ function isActive(href: string) {
   toggle?.addEventListener("click", () => {
     const open = menu?.classList.toggle("hidden") === false;
     toggle.setAttribute("aria-expanded", String(open));
+  });
+
+  servicesToggle?.addEventListener("click", () => {
+    const open = servicesMenu?.classList.toggle("hidden") === false;
+    servicesToggle.setAttribute("aria-expanded", String(open));
+    const chevron = servicesToggle.querySelector("[data-chevron]");
+    chevron?.classList.toggle("rotate-180", open);
+  });
+
+  document.querySelectorAll(".mobile-area-toggle").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const panel = btn.nextElementSibling as HTMLElement | null;
+      if (!panel) return;
+      const open = panel.classList.toggle("hidden") === false;
+      btn.setAttribute("aria-expanded", String(open));
+      const chevron = btn.querySelector("[data-chevron]");
+      chevron?.classList.toggle("rotate-180", open);
+    });
   });
 
   document.querySelectorAll(".mobile-link").forEach((link) => {

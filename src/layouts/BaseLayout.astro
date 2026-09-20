@@ -5,12 +5,48 @@ import { site } from "../data/site";
 interface Props {
   title?: string;
   description?: string;
+  image?: string;
+  noindex?: boolean;
 }
 
 const {
   title = `${site.name} | ${site.tagline}`,
   description = "Friendly, experienced legal guidance in Brunswick. Commercial, criminal, family, immigration, property, wills & estate planning — delivered cost-effectively.",
+  image = "/images/inner-banner.webp",
+  noindex = false,
 } = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const ogImage = new URL(image, site.url).href;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": ["LegalService", "Attorney"],
+  name: site.name,
+  url: site.url,
+  telephone: site.phone,
+  email: site.email,
+  image: ogImage,
+  description,
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: site.address.line1,
+    addressLocality: "Brunswick",
+    addressRegion: "VIC",
+    postalCode: "3056",
+    addressCountry: "AU",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: -37.7675,
+    longitude: 144.961,
+  },
+  areaServed: {
+    "@type": "AdministrativeArea",
+    name: "Victoria, Australia",
+  },
+  priceRange: "$$",
+};
 ---
 
 <!doctype html>
@@ -19,9 +55,26 @@ const {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={description} />
+    {noindex ? <meta name="robots" content="noindex,nofollow" /> : null}
     <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonical} />
     <link rel="icon" type="image/png" href="/logo.png" />
     <title>{title}</title>
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="en_AU" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
   </head>
   <body>
     <slot />

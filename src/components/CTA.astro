@@ -1,18 +1,19 @@
 ---
 import { site } from "../data/site";
+import Icon from "./Icon.astro";
 ---
 
 <section class="relative overflow-hidden py-24 text-white md:py-32">
   <div class="absolute inset-0">
     <img
-      src="https://images.unsplash.com/photo-1514395462725-fb4566210144?auto=format&fit=crop&w=2400&q=80"
-      alt=""
+      src="/images/cta-banner.webp"
+      alt="Makdesi & Associates Lawyers reception in Brunswick"
       class="h-full w-full object-cover object-center"
       width="2400"
       height="1400"
       loading="lazy"
     />
-    <div class="absolute inset-0 bg-navy/80"></div>
+    <div class="absolute inset-0 bg-navy/75"></div>
   </div>
 
   <div class="relative z-10 mx-auto max-w-3xl px-5 text-center md:px-8">
@@ -21,7 +22,10 @@ import { site } from "../data/site";
     </h2>
     <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
       <a href="/contact" class="btn-gold">Book a Consultation</a>
-      <a href={site.phoneHref} class="btn-outline-light">Call {site.phone}</a>
+      <a href={site.phoneHref} class="btn-outline-light">
+        <Icon name="phone" class="h-4 w-4" />
+        Call {site.phone}
+      </a>
     </div>
   </div>
 </section>

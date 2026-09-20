@@ -1,7 +1,9 @@
 ---
 import Icon from "./Icon.astro";
 import Logo from "./Logo.astro";
-import { footerNav, site } from "../data/site";
+import { footerNav, legalNav, site } from "../data/site";
+
+const hasSocial = Boolean(site.social.facebook || site.social.linkedin);
 ---
 
 <footer class="bg-navy text-white">
@@ -14,6 +16,16 @@ import { footerNav, site } from "../data/site";
         <p class="mt-4 max-w-xs text-sm leading-relaxed text-white/55">
           Practical, client-focused legal services in Brunswick — led by
           Principal Lawyer Mary Makdesi.
+        </p>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-white/45">
+          Sister firm:{" "}
+          <a
+            href={site.sisterFirm.url}
+            class="text-gold no-underline hover:text-gold-bright"
+            target="_blank"
+            rel="noopener noreferrer"
+            >{site.sisterFirm.name}</a
+          >
         </p>
       </div>
 
@@ -58,26 +70,34 @@ import { footerNav, site } from "../data/site";
           </li>
         </ul>
 
-        <div class="mt-5 flex items-center gap-3">
-          <a
-            href="https://www.facebook.com/"
-            class="flex h-10 w-10 items-center justify-center border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold"
-            aria-label="Facebook"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Icon name="facebook" class="h-4 w-4" />
-          </a>
-          <a
-            href="https://www.linkedin.com/"
-            class="flex h-10 w-10 items-center justify-center border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold"
-            aria-label="LinkedIn"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Icon name="linkedin" class="h-4 w-4" />
-          </a>
-        </div>
+        {
+          hasSocial ? (
+            <div class="mt-5 flex items-center gap-3">
+              {site.social.facebook ? (
+                <a
+                  href={site.social.facebook}
+                  class="flex h-10 w-10 items-center justify-center border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold"
+                  aria-label="Facebook"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name="facebook" class="h-4 w-4" />
+                </a>
+              ) : null}
+              {site.social.linkedin ? (
+                <a
+                  href={site.social.linkedin}
+                  class="flex h-10 w-10 items-center justify-center border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold"
+                  aria-label="LinkedIn"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Icon name="linkedin" class="h-4 w-4" />
+                </a>
+              ) : null}
+            </div>
+          ) : null
+        }
       </div>
     </div>
   </div>
@@ -88,15 +108,17 @@ import { footerNav, site } from "../data/site";
       {site.name}. Liability limited by a scheme approved under Professional
       Standards Legislation.
     </p>
-    <p class="mt-2">
-      Sister firm:{" "}
-      <a
-        href={site.sisterFirm.url}
-        class="text-white/55 no-underline transition-colors hover:text-gold"
-        target="_blank"
-        rel="noopener noreferrer"
-        >{site.sisterFirm.name}</a
-      >
+    <p class="mt-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
+      {
+        legalNav.map((item) => (
+          <a
+            href={item.href}
+            class="text-white/55 no-underline transition-colors hover:text-gold"
+          >
+            {item.label}
+          </a>
+        ))
+      }
     </p>
     <p class="mt-2">
       Web development and Design by{" "}

@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
 import CTA from "../../components/CTA.astro";
+import Icon from "../../components/Icon.astro";
 import { getTeamMember, site, team } from "../../data/site";
 
 export function getStaticPaths() {
@@ -26,8 +27,19 @@ const others = team.filter((m) => m.slug !== member.slug);
 >
   <Header />
   <main>
-    <section class="bg-navy pt-28 pb-16 text-white md:pt-32 md:pb-20">
-      <div class="mx-auto max-w-7xl px-5 md:px-8">
+    <section class="relative overflow-hidden bg-navy pt-28 pb-16 text-white md:pt-32 md:pb-20">
+      <div class="absolute inset-0">
+        <img
+          src="/images/inner-banner.webp"
+          alt="Makdesi & Associates Lawyers reception"
+          class="h-full w-full object-cover object-center"
+          width="2400"
+          height="1400"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-navy via-navy/85 to-navy/55"></div>
+        <div class="absolute inset-0 bg-gradient-to-t from-navy/70 via-transparent to-navy/40"></div>
+      </div>
+      <div class="relative z-10 mx-auto max-w-7xl px-5 md:px-8">
         <a
           href="/team"
           class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-gold no-underline hover:text-gold-bright"
@@ -87,7 +99,10 @@ const others = team.filter((m) => m.slug !== member.slug);
 
           <div class="mt-10 flex flex-wrap gap-3">
             <a href="/contact" class="btn-gold">Speak with our team</a>
-            <a href={site.phoneHref} class="btn-outline-dark">Call {site.phone}</a>
+            <a href={site.phoneHref} class="btn-outline-dark">
+              <Icon name="phone" class="h-4 w-4" />
+              Call {site.phone}
+            </a>
           </div>
         </div>
       </div>

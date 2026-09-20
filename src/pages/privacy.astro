@@ -1,0 +1,149 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import PageHero from "../components/PageHero.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title={`Privacy Policy | ${site.name}`}
+  description={`How ${site.name} collects, uses and protects personal information under Australian privacy law.`}
+>
+  <Header />
+  <main>
+    <PageHero
+      eyebrow="Legal"
+      title="Privacy Policy"
+      description="How we collect, use and protect your personal information."
+    />
+
+    <section class="bg-white py-16 md:py-24">
+      <div class="prose-legal mx-auto max-w-3xl space-y-8 px-5 text-base leading-relaxed text-slate md:px-8">
+        <p>
+          This Privacy Policy explains how {site.name} (“we”, “us”, “our”)
+          collects, uses, stores and discloses personal information when you
+          visit our website, contact us, or engage our legal services. We are
+          committed to complying with the Privacy Act 1988 (Cth) and the
+          Australian Privacy Principles (APPs), and with applicable Victorian
+          privacy obligations.
+        </p>
+        <p class="text-sm text-mist">Last updated: September 2026</p>
+
+        <div>
+          <h2 class="font-display text-2xl font-semibold text-navy">1. Who we are</h2>
+          <p class="mt-3">
+            {site.name}<br />
+            {site.address.full}<br />
+            Phone: <a href={site.phoneHref}>{site.phone}</a><br />
+            Email: <a href={site.emailHref}>{site.email}</a>
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-semibold text-navy">2. Information we collect</h2>
+          <p class="mt-3">Depending on how you interact with us, we may collect:</p>
+          <ul class="mt-3 list-disc space-y-2 pl-5">
+            <li>Identity and contact details (name, email, phone, postal address)</li>
+            <li>Enquiry details and information you submit via our contact forms</li>
+            <li>Information relevant to providing legal advice or representation</li>
+            <li>
+              Technical and usage data (IP address, browser type, device information,
+              pages visited) collected through cookies or similar technologies
+            </li>
+            <li>Records of communications with us (including calls, emails and meetings)</li>
+          </ul>
+          <p class="mt-3">
+            We generally collect personal information directly from you. In some
+            cases we may receive information from third parties (for example other
+            lawyers, courts, government agencies, or your authorised representatives)
+            where reasonably necessary to provide our services.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-semibold text-navy">3. How we use personal information</h2>
+          <p class="mt-3">We use personal information to:</p>
+          <ul class="mt-3 list-disc space-y-2 pl-5">
+            <li>Respond to enquiries and provide legal services</li>
+            <li>Manage client matters, billing and file administration</li>
+            <li>Comply with our professional and legal obligations</li>
+            <li>Improve our website and client experience</li>
+            <li>Communicate with you about your matter or our services (where permitted)</li>
+            <li>Protect our rights, security and the integrity of our systems</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-semibold text-navy">4. Disclosure</h2>
+          <p class="mt-3">
+            We may disclose personal information to third parties where reasonably
+            necessary for the purposes above, including:
+          </p>
+          <ul class="mt-3 list-disc space-y-2 pl-5">
+            <li>Courts, tribunals, regulators and government agencies</li>
+            <li>Other legal practitioners, barristers, experts and service providers</li>
+            <li>IT, hosting, email and website service providers</li>
+            <li>Our professional indemnity insurers and auditors where required</li>
+          </ul>
+          <p class="mt-3">
+            We do not sell personal information. Where we engage service providers,
+            we take reasonable steps to require them to handle personal information
+            appropriately.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-semibold text-navy">5. Storage and security</h2>
+          <p class="mt-3">
+            We take reasonable steps to protect personal information from misuse,
+            interference, loss, and unauthorised access, modification or disclosure.
+            Client information is stored using professional systems and access
+            controls appropriate to a legal practice. No method of transmission or
+            storage is completely secure.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-semibold text-navy">6. Cookies and analytics</h2>
+          <p class="mt-3">
+            Our website may use cookies and similar technologies to operate the
+            site and understand how it is used. If we use analytics tools (such as
+            Google Analytics), those providers may process usage data in accordance
+            with their own privacy policies. You can control cookies through your
+            browser settings.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-semibold text-navy">7. Access and correction</h2>
+          <p class="mt-3">
+            You may request access to, or correction of, the personal information
+            we hold about you, subject to exceptions under the Privacy Act and our
+            professional obligations (including legal professional privilege).
+            Contact us using the details above to make a request.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-semibold text-navy">8. Complaints</h2>
+          <p class="mt-3">
+            If you have a privacy concern, please contact us first so we can try
+            to resolve it. If you are not satisfied with our response, you may
+            contact the Office of the Australian Information Commissioner (OAIC)
+            at <a href="https://www.oaic.gov.au" target="_blank" rel="noopener noreferrer">oaic.gov.au</a>.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="font-display text-2xl font-semibold text-navy">9. Changes</h2>
+          <p class="mt-3">
+            We may update this Privacy Policy from time to time. The current
+            version will be published on this page with an updated date.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

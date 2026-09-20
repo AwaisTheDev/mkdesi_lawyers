@@ -2,6 +2,7 @@ export const site = {
   name: "Makdesi And Associates Lawyers",
   shortName: "Makdesi",
   tagline: "High Quality, Cost Effective Legal Services",
+  url: "https://makdesilawyers.com.au",
   phone: "0450 706 100",
   phoneHref: "tel:+61450706100",
   email: "mary@makdesilawyers.com.au",
@@ -23,7 +24,18 @@ export const site = {
     description:
       "Makdesi Lawyers works alongside Genuine Legal Group — a sister firm also led by Mary Makdesi. Together, the practices share a commitment to practical, client-focused legal advice and a trusted network of professionals across Victoria.",
   },
+  /** Set real profile URLs when confirmed; empty hides footer icons */
+  social: {
+    facebook: "",
+    linkedin: "",
+  },
 };
+
+export const legalNav = [
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Website Terms", href: "/terms" },
+  { label: "Disclaimer", href: "/disclaimer" },
+];
 
 export const nav = [
   { label: "About", href: "/about" },
@@ -70,11 +82,11 @@ export const trustItems = [
 export const about = {
   headline: "A client-focused legal practice in Brunswick",
   intro:
-    "Makdesi Lawyers provides practical, strategic legal services for individuals, families and businesses. Led by Principal Lawyer Mary Makdesi, we combine clear communication with determined advocacy — so clients understand their options and feel supported at every step.",
+    "Makdesi And Associates Lawyers are dedicated to providing friendly, experienced guidance — helping you navigate legal matters including estate planning, probate, wills, business and property law. We focus on getting the results you want, efficiently and cost-effectively, whilst building long and lasting relationships with our clients.",
   paragraphs: [
-    "Our approach begins with listening. We take time to understand each client’s circumstances, explain the legal landscape in plain language, and develop strategies that balance legal objectives with cost-effectiveness.",
+    "As you experience life’s changes, we’ll be there for you when you need advice. Our approach begins with listening: we take time to understand each client’s circumstances, explain the legal landscape in plain language, and develop strategies that balance legal objectives with cost-effectiveness.",
     "The firm has a strong conveyancing practice, supported by a specialist team dedicated to residential and commercial property transactions, alongside broader advice across estates, commercial matters, family law and criminal law.",
-    "Mary Makdesi is also Director and Principal Lawyer of our sister firm, Genuine Legal Group — expanding the network of trusted professionals we can draw on when specialised expertise is needed.",
+    "Makdesi Lawyers also works alongside sister firm Genuine Legal Group (www.genuinelegalgroup.com.au), also led by Director & Principal Lawyer Mary Makdesi — sharing a commitment to practical, client-focused legal advice across Victoria.",
   ],
   values: [
     {

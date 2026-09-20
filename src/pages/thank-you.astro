@@ -1,0 +1,33 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title={`Enquiry sent | ${site.name}`}
+  description="Thank you for contacting Makdesi Lawyers."
+  noindex={true}
+>
+  <Header />
+  <main class="bg-cream pt-32 pb-24">
+    <div class="mx-auto max-w-xl px-5 text-center md:px-8">
+      <p class="text-xs font-bold uppercase tracking-[0.14em] text-gold">Thank you</p>
+      <h1 class="mt-3 font-display text-4xl font-semibold text-navy">
+        Your enquiry has been sent
+      </h1>
+      <p class="mt-4 text-base leading-relaxed text-slate">
+        We’ll respond as soon as we can. For urgent matters, call{" "}
+        <a href={site.phoneHref} class="font-semibold text-navy no-underline hover:text-gold"
+          >{site.phone}</a
+        >.
+      </p>
+      <div class="mt-8 flex flex-wrap justify-center gap-3">
+        <a href="/" class="btn-gold">Back to home</a>
+        <a href="/services" class="btn-outline">Areas of law</a>
+      </div>
+    </div>
+  </main>
+  <Footer />
+</BaseLayout>

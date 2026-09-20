@@ -33,31 +33,43 @@ import { site } from "../data/site";
       </div>
 
       <div class="md:col-span-7">
-        <div class="border border-navy/10 bg-white p-8 md:p-10">
-          <p class="text-xs font-bold uppercase tracking-[0.14em] text-gold">
-            Leadership
-          </p>
-          <p class="mt-4 font-display text-2xl font-semibold text-navy md:text-3xl">
-            {site.sisterFirm.principal}
-          </p>
-          <p class="mt-2 text-sm tracking-wide text-gold">
-            {site.sisterFirm.principalRole}
-          </p>
-          <p class="mt-5 max-w-md text-base leading-relaxed text-slate">
-            Mary leads both Makdesi Lawyers and Genuine Legal Group, bringing
-            the same clear communication and determined advocacy across both
-            practices — so clients can access the right expertise when it
-            matters.
-          </p>
-          <a
-            href={site.sisterFirm.url}
-            class="mt-8 inline-flex items-center gap-2 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-gold no-underline transition-colors hover:text-gold-deep"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            www.genuinelegalgroup.com.au
-            <span aria-hidden="true">→</span>
-          </a>
+        <div class="grid overflow-hidden border border-navy/10 bg-white sm:grid-cols-[200px_1fr] md:grid-cols-[240px_1fr]">
+          <div class="bg-cream">
+            <img
+              src="/images/mary.webp"
+              alt={`${site.sisterFirm.principal}, ${site.sisterFirm.principalRole}`}
+              class="aspect-[4/5] h-full w-full object-cover object-top"
+              width="480"
+              height="600"
+              loading="lazy"
+            />
+          </div>
+          <div class="flex flex-col justify-center p-8 md:p-10">
+            <p class="text-xs font-bold uppercase tracking-[0.14em] text-gold">
+              Leadership
+            </p>
+            <p class="mt-4 font-display text-2xl font-semibold text-navy md:text-3xl">
+              {site.sisterFirm.principal}
+            </p>
+            <p class="mt-2 text-sm tracking-wide text-gold">
+              {site.sisterFirm.principalRole}
+            </p>
+            <p class="mt-5 max-w-md text-base leading-relaxed text-slate">
+              Mary leads both Makdesi Lawyers and Genuine Legal Group, bringing
+              the same clear communication and determined advocacy across both
+              practices — so clients can access the right expertise when it
+              matters.
+            </p>
+            <a
+              href={site.sisterFirm.url}
+              class="mt-8 inline-flex items-center gap-2 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-gold no-underline transition-colors hover:text-gold-deep"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              www.genuinelegalgroup.com.au
+              <span aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
