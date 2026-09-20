@@ -1,0 +1,76 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import PageHero from "../../components/PageHero.astro";
+import Footer from "../../components/Footer.astro";
+import CTA from "../../components/CTA.astro";
+import Icon from "../../components/Icon.astro";
+import { practiceAreas, site } from "../../data/site";
+---
+
+<BaseLayout
+  title={`Areas of Law | Victorian Legal Services | ${site.name}`}
+  description="Explore Makdesi Lawyers practice areas in Victoria — commercial, criminal, family, immigration, property & conveyancing, wills & estate planning, and more."
+>
+  <Header />
+  <main>
+    <PageHero
+      eyebrow="Areas of law"
+      title="Legal support across Victoria"
+      description="Practical advice from our Brunswick practice — for individuals, families and businesses under Australian and Victorian law."
+    />
+
+    <section class="bg-white py-16 md:py-24">
+      <div class="mx-auto grid max-w-7xl gap-6 px-5 sm:grid-cols-2 lg:grid-cols-3 md:px-8">
+        {
+          practiceAreas.map((area) => (
+            <a
+              href={`/services/${area.slug}`}
+              class="group flex flex-col overflow-hidden border border-navy/10 bg-cream no-underline transition-colors hover:border-gold"
+            >
+              <div class="aspect-[16/10] overflow-hidden">
+                <img
+                  src={area.image}
+                  alt=""
+                  class="h-full w-full object-cover transition-transform duration-700 group-hover:scale-[1.04]"
+                  width="800"
+                  height="500"
+                  loading="lazy"
+                />
+              </div>
+              <div class="flex flex-1 flex-col p-6">
+                <span class="flex h-11 w-11 items-center justify-center border border-gold text-gold">
+                  <Icon name={area.icon} class="h-5 w-5" />
+                </span>
+                <h2 class="mt-5 font-display text-2xl font-semibold text-navy group-hover:text-gold-deep">
+                  {area.title}
+                </h2>
+                <p class="mt-3 flex-1 text-sm leading-relaxed text-slate">
+                  {area.description}
+                </p>
+                {
+                  area.children?.length ? (
+                    <p class="mt-3 text-xs text-mist">
+                      {area.children.length} related services
+                    </p>
+                  ) : null
+                }
+                <span class="mt-5 inline-flex items-center gap-1.5 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-gold">
+                  Learn more
+                  <span aria-hidden="true">→</span>
+                </span>
+              </div>
+            </a>
+          ))
+        }
+      </div>
+      <p class="mx-auto mt-10 max-w-7xl px-5 text-xs text-mist md:px-8">
+        Website copy is draft for client review and is not legal advice.
+        Jurisdiction notes refer to Victorian and Commonwealth Australian law.
+      </p>
+    </section>
+
+    <CTA />
+  </main>
+  <Footer />
+</BaseLayout>

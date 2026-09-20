@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import PageHero from "../components/PageHero.astro";
+import Footer from "../components/Footer.astro";
+import CTA from "../components/CTA.astro";
+import Icon from "../components/Icon.astro";
+import { reviews, site } from "../data/site";
+---
+
+<BaseLayout
+  title={`Client Reviews | ${site.name}`}
+  description="Client reviews of Makdesi And Associates Lawyers in Brunswick, Victoria."
+>
+  <Header />
+  <main>
+    <PageHero
+      eyebrow="Client reviews"
+      title="What our clients say"
+      description="Feedback from people we have assisted — published with the firm’s existing approved reviews."
+    />
+
+    <section class="bg-white py-16 md:py-24">
+      <div class="mx-auto max-w-3xl px-5 md:px-8">
+        <div class="space-y-10">
+          {
+            reviews.map((review) => (
+              <blockquote class="border-l-2 border-gold pl-6 md:pl-8">
+                <Icon name="quote" class="mb-4 h-8 w-8 text-gold" />
+                <p class="font-display text-xl leading-snug text-navy md:text-2xl">
+                  “{review.quote}”
+                </p>
+                <footer class="mt-5">
+                  <cite class="not-italic text-sm font-semibold uppercase tracking-[0.12em] text-gold">
+                    — {review.name}
+                  </cite>
+                </footer>
+              </blockquote>
+            ))
+          }
+        </div>
+        <p class="mt-12 text-xs leading-relaxed text-mist">
+          Reviews sourced from the firm’s published client feedback. Individual
+          experiences vary. Reviews do not guarantee outcomes in future matters.
+        </p>
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+  <Footer />
+</BaseLayout>

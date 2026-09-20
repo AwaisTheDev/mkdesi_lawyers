@@ -6,15 +6,8 @@ import { trustItems } from "../data/site";
 <section class="border-b border-navy/8 bg-white py-12 md:py-14" id="about">
   <div class="mx-auto grid max-w-7xl gap-8 px-5 sm:grid-cols-2 lg:grid-cols-4 md:px-8">
     {
-      trustItems.map((item, i) => (
-        <article
-          class:list={[
-            "reveal text-center sm:text-left",
-            i === 1 && "reveal-delay-1",
-            i === 2 && "reveal-delay-2",
-            i === 3 && "reveal-delay-3",
-          ]}
-        >
+      trustItems.map((item) => (
+        <article class="text-center sm:text-left">
           <span class="mx-auto mb-4 flex h-12 w-12 items-center justify-center border border-gold text-gold sm:mx-0">
             <Icon name={item.icon} class="h-6 w-6" />
           </span>

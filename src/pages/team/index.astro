@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import PageHero from "../../components/PageHero.astro";
+import Footer from "../../components/Footer.astro";
+import CTA from "../../components/CTA.astro";
+import { site, team } from "../../data/site";
+---
+
+<BaseLayout
+  title={`Our Team | ${site.name}`}
+  description="Meet the Makdesi Lawyers team — Principal Lawyer Mary Makdesi, Associate Lawyer Nizar Makdesi, and our legal administration team."
+>
+  <Header />
+  <main>
+    <PageHero
+      eyebrow="Our team"
+      title="Experienced people. Clear advice."
+      description="A dedicated team ready to listen and give practical, objective guidance when it matters most — led by Principal Lawyer Mary Makdesi."
+    />
+
+    <section class="bg-white py-16 md:py-24">
+      <div class="mx-auto grid max-w-7xl gap-10 px-5 sm:grid-cols-2 lg:grid-cols-4 md:px-8">
+        {
+          team.map((member) => (
+            <article class="group flex flex-col">
+              <a href={`/team/${member.slug}`} class="block no-underline">
+                <div class="overflow-hidden border border-navy/10 bg-cream">
+                  {member.photo ? (
+                    <img
+                      src={member.photo}
+                      alt={`${member.name}, ${member.role}`}
+                      class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                      width="900"
+                      height="1125"
+                      loading="lazy"
+                    />
+                  ) : null}
+                </div>
+                <h2 class="mt-5 font-display text-2xl font-semibold text-navy group-hover:text-gold-deep">
+                  {member.name}
+                </h2>
+                <p class="mt-1 text-sm tracking-wide text-gold">{member.role}</p>
+                <p class="mt-3 text-sm leading-relaxed text-slate line-clamp-4">
+                  {member.bio}
+                </p>
+                <span class="mt-4 inline-flex items-center gap-1.5 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-gold">
+                  View profile
+                  <span aria-hidden="true">→</span>
+                </span>
+              </a>
+            </article>
+          ))
+        }
+      </div>
+    </section>
+
+    <CTA />
+  </main>
+  <Footer />
+</BaseLayout>

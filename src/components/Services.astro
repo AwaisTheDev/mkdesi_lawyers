@@ -6,11 +6,11 @@ import { featuredAreas } from "../data/site";
   <div class="mx-auto max-w-7xl px-5 md:px-8">
     <div class="mx-auto max-w-2xl text-center">
       <h2
-        class="reveal font-display text-4xl font-semibold tracking-tight text-navy md:text-5xl"
+        class="font-display text-4xl font-semibold tracking-tight text-navy md:text-5xl"
       >
         Our Areas of Law
       </h2>
-      <p class="reveal reveal-delay-1 mt-4 text-base leading-relaxed text-slate md:text-lg">
+      <p class="mt-4 text-base leading-relaxed text-slate md:text-lg">
         Practical legal support across the matters that shape your life and
         business — from first advice through to resolution.
       </p>
@@ -18,15 +18,8 @@ import { featuredAreas } from "../data/site";
 
     <div class="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
       {
-        featuredAreas.map((area, i) => (
-          <article
-            class:list={[
-              "reveal group flex flex-col bg-white",
-              i === 1 && "reveal-delay-1",
-              i === 2 && "reveal-delay-2",
-              i === 3 && "reveal-delay-3",
-            ]}
-          >
+        featuredAreas.map((area) => (
+          <article class="group flex flex-col bg-white">
             <div class="aspect-[4/3] overflow-hidden">
               <img
                 src={area.image}
@@ -55,6 +48,10 @@ import { featuredAreas } from "../data/site";
           </article>
         ))
       }
+    </div>
+
+    <div class="mt-12 text-center">
+      <a href="/services" class="btn-gold">View all areas of law</a>
     </div>
   </div>
 </section>

@@ -1,19 +1,35 @@
 ---
 import Icon from "./Icon.astro";
 import { practiceAreas, site } from "../data/site";
+
+interface Props {
+  showHeading?: boolean;
+}
+
+const { showHeading = true } = Astro.props;
 ---
 
 <section id="contact" class="bg-cream py-20 md:py-28">
   <div class="mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-12 md:gap-16 md:px-8">
     <div class="md:col-span-5">
-      <h2 class="reveal font-display text-4xl font-semibold tracking-tight text-navy md:text-5xl">
-        Get In Touch
-      </h2>
-      <p class="reveal reveal-delay-1 mt-4 max-w-md text-base leading-relaxed text-slate">
-        Tell us briefly about your matter. We’ll respond as soon as we can.
-      </p>
+      {
+        showHeading ? (
+          <>
+            <h2 class="font-display text-4xl font-semibold tracking-tight text-navy md:text-5xl">
+              Get In Touch
+            </h2>
+            <p class="mt-4 max-w-md text-base leading-relaxed text-slate">
+              Tell us briefly about your matter. We’ll respond as soon as we can.
+            </p>
+          </>
+        ) : (
+          <p class="max-w-md text-base leading-relaxed text-slate">
+            Prefer to call or email? Reach us directly using the details below.
+          </p>
+        )
+      }
 
-      <ul class="reveal reveal-delay-2 mt-10 space-y-5">
+      <ul class="mt-10 space-y-5">
         <li class="flex items-start gap-4">
           <span class="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center border border-gold text-gold">
             <Icon name="phone" class="h-5 w-5" />
@@ -56,7 +72,7 @@ import { practiceAreas, site } from "../data/site";
     </div>
 
     <form
-      class="reveal reveal-delay-1 grid gap-4 bg-white p-6 shadow-sm md:col-span-7 md:p-8"
+      class="grid gap-4 bg-white p-6 shadow-sm md:col-span-7 md:p-8"
       action={`mailto:${site.email}`}
       method="post"
       enctype="text/plain"

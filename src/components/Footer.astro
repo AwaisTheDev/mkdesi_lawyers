@@ -1,57 +1,84 @@
 ---
 import Icon from "./Icon.astro";
 import Logo from "./Logo.astro";
-import { site } from "../data/site";
+import { footerNav, site } from "../data/site";
 ---
 
 <footer class="bg-navy text-white">
-  <div
-    class="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-12 md:flex-row md:items-center md:justify-between md:px-8"
-  >
-    <a href="#top" aria-label={site.name}>
-      <Logo class="h-12 w-auto" />
-    </a>
+  <div class="mx-auto max-w-7xl px-5 py-12 md:px-8">
+    <div class="grid gap-10 md:grid-cols-12 md:gap-12">
+      <div class="md:col-span-4">
+        <a href="/" aria-label={site.name}>
+          <Logo class="h-12 w-auto" />
+        </a>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-white/55">
+          Practical, client-focused legal services in Brunswick — led by
+          Principal Lawyer Mary Makdesi.
+        </p>
+      </div>
 
-    <ul class="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:gap-8">
-      <li class="flex items-center gap-2.5 text-sm text-white/75">
-        <Icon name="phone" class="h-4 w-4 text-gold" />
-        <a href={site.phoneHref} class="no-underline hover:text-gold">{site.phone}</a>
-      </li>
-      <li class="flex items-center gap-2.5 text-sm text-white/75">
-        <Icon name="mail" class="h-4 w-4 text-gold" />
-        <a href={site.emailHref} class="no-underline hover:text-gold">{site.email}</a>
-      </li>
-      <li class="flex items-center gap-2.5 text-sm text-white/75">
-        <Icon name="mapPin" class="h-4 w-4 shrink-0 text-gold" />
-        <a
-          href={site.address.mapsLink}
-          class="no-underline hover:text-gold"
-          target="_blank"
-          rel="noopener noreferrer"
-          >{site.address.full}</a
-        >
-      </li>
-    </ul>
+      <div class="md:col-span-3">
+        <p class="text-xs font-bold uppercase tracking-[0.14em] text-gold">Explore</p>
+        <ul class="mt-4 space-y-2.5">
+          {
+            footerNav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="text-sm text-white/70 no-underline transition-colors hover:text-gold"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
 
-    <div class="flex items-center gap-3">
-      <a
-        href="https://www.facebook.com/"
-        class="flex h-10 w-10 items-center justify-center border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold"
-        aria-label="Facebook"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon name="facebook" class="h-4 w-4" />
-      </a>
-      <a
-        href="https://www.linkedin.com/"
-        class="flex h-10 w-10 items-center justify-center border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold"
-        aria-label="LinkedIn"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <Icon name="linkedin" class="h-4 w-4" />
-      </a>
+      <div class="md:col-span-5">
+        <p class="text-xs font-bold uppercase tracking-[0.14em] text-gold">Contact</p>
+        <ul class="mt-4 space-y-3">
+          <li class="flex items-center gap-2.5 text-sm text-white/75">
+            <Icon name="phone" class="h-4 w-4 text-gold" />
+            <a href={site.phoneHref} class="no-underline hover:text-gold">{site.phone}</a>
+          </li>
+          <li class="flex items-center gap-2.5 text-sm text-white/75">
+            <Icon name="mail" class="h-4 w-4 text-gold" />
+            <a href={site.emailHref} class="no-underline hover:text-gold">{site.email}</a>
+          </li>
+          <li class="flex items-start gap-2.5 text-sm text-white/75">
+            <Icon name="mapPin" class="mt-0.5 h-4 w-4 shrink-0 text-gold" />
+            <a
+              href={site.address.mapsLink}
+              class="no-underline hover:text-gold"
+              target="_blank"
+              rel="noopener noreferrer"
+              >{site.address.full}</a
+            >
+          </li>
+        </ul>
+
+        <div class="mt-5 flex items-center gap-3">
+          <a
+            href="https://www.facebook.com/"
+            class="flex h-10 w-10 items-center justify-center border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold"
+            aria-label="Facebook"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="facebook" class="h-4 w-4" />
+          </a>
+          <a
+            href="https://www.linkedin.com/"
+            class="flex h-10 w-10 items-center justify-center border border-white/20 text-white/70 transition-colors hover:border-gold hover:text-gold"
+            aria-label="LinkedIn"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <Icon name="linkedin" class="h-4 w-4" />
+          </a>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -60,6 +87,16 @@ import { site } from "../data/site";
       © {new Date().getFullYear()}{" "}
       {site.name}. Liability limited by a scheme approved under Professional
       Standards Legislation.
+    </p>
+    <p class="mt-2">
+      Sister firm:{" "}
+      <a
+        href={site.sisterFirm.url}
+        class="text-white/55 no-underline transition-colors hover:text-gold"
+        target="_blank"
+        rel="noopener noreferrer"
+        >{site.sisterFirm.name}</a
+      >
     </p>
     <p class="mt-2">
       Web development and Design by{" "}

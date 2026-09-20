@@ -1,0 +1,43 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import PageHero from "../components/PageHero.astro";
+import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title={`Contact | ${site.name}`}
+  description={`Contact Makdesi Lawyers in Brunswick. Call ${site.phone} or send an enquiry — ${site.address.full}.`}
+>
+  <Header />
+  <main>
+    <PageHero
+      eyebrow="Contact"
+      title="Get in touch"
+      description="Tell us briefly about your matter. We’ll respond as soon as we can — or call us directly."
+    />
+
+    <Contact showHeading={false} />
+
+    <section class="bg-white pb-20 md:pb-28">
+      <div class="mx-auto max-w-7xl px-5 md:px-8">
+        <h2 class="font-display text-3xl font-semibold text-navy">Find us</h2>
+        <p class="mt-3 max-w-xl text-base text-slate">
+          {site.address.full}
+        </p>
+        <div class="mt-8 overflow-hidden border border-navy/10">
+          <iframe
+            title={`Map showing ${site.address.full}`}
+            src={site.address.mapsEmbed}
+            class="h-[360px] w-full border-0 md:h-[420px]"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</BaseLayout>

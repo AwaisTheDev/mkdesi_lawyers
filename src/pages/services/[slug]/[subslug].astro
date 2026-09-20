@@ -1,0 +1,174 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Header from "../../../components/Header.astro";
+import Footer from "../../../components/Footer.astro";
+import CTA from "../../../components/CTA.astro";
+import {
+  getAllSubServicePaths,
+  getPracticeArea,
+  getSubService,
+  site,
+} from "../../../data/site";
+
+export function getStaticPaths() {
+  return getAllSubServicePaths().map(({ parent, slug }) => ({
+    params: { slug: parent, subslug: slug },
+  }));
+}
+
+const { slug, subslug } = Astro.params;
+const parent = getPracticeArea(slug!);
+const service = getSubService(slug!, subslug!);
+
+if (!parent || !service) {
+  throw new Error(`Unknown service: ${slug}/${subslug}`);
+}
+
+const siblings = (parent.children ?? []).filter((c) => c.slug !== service.slug);
+---
+
+<BaseLayout
+  title={`${service.title} | ${parent.title} | ${site.name}`}
+  description={service.summary}
+>
+  <Header />
+  <main>
+    <section class="relative overflow-hidden bg-navy pt-28 text-white md:pt-32">
+      <div class="absolute inset-0">
+        <img
+          src={service.image}
+          alt=""
+          class="h-full w-full object-cover opacity-35"
+          width="1600"
+          height="900"
+        />
+        <div class="absolute inset-0 bg-gradient-to-r from-navy via-navy/90 to-navy/70"></div>
+      </div>
+      <div class="relative z-10 mx-auto max-w-7xl px-5 pb-16 md:px-8 md:pb-20">
+        <nav class="flex flex-wrap items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-gold">
+          <a href="/services" class="no-underline hover:text-gold-bright">Areas of Law</a>
+          <span class="text-white/40">/</span>
+          <a
+            href={`/services/${parent.slug}`}
+            class="no-underline hover:text-gold-bright"
+            >{parent.title}</a
+          >
+        </nav>
+        <h1 class="mt-6 max-w-3xl font-display text-[clamp(2rem,4vw,3.2rem)] font-semibold leading-[1.12] tracking-tight">
+          {service.title}
+        </h1>
+        <p class="mt-4 max-w-2xl text-base leading-relaxed text-white/65 md:text-lg">
+          {service.summary}
+        </p>
+      </div>
+    </section>
+
+    <section class="bg-white py-14 md:py-20">
+      <div class="mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-12 md:gap-16 md:px-8">
+        <div class="md:col-span-7">
+          {
+            service.body.map((paragraph, i) => (
+              <p
+                class:list={[
+                  "text-base leading-relaxed text-slate md:text-lg",
+                  i > 0 && "mt-5",
+                ]}
+              >
+                {paragraph}
+              </p>
+            ))
+          }
+
+          {
+            service.points?.length ? (
+              <div class="mt-10">
+                <h2 class="font-display text-2xl font-semibold text-navy">
+                  How we can help
+                </h2>
+                <ul class="mt-4 space-y-2">
+                  {service.points.map((point) => (
+                    <li class="flex gap-3 text-base text-slate">
+                      <span class="mt-2 h-1.5 w-1.5 shrink-0 bg-gold" aria-hidden="true" />
+                      {point}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ) : null
+          }
+
+          <p class="mt-8 border-l-2 border-gold pl-4 text-sm leading-relaxed text-mist">
+            {parent.jurisdictionNote}
+          </p>
+          <p class="mt-4 text-xs leading-relaxed text-mist">
+            Draft website content for client review. This information is general
+            in nature and is not legal advice. Outcomes depend on individual
+            circumstances.
+          </p>
+
+          <div class="mt-10 flex flex-wrap gap-3">
+            <a href="/contact" class="btn-gold">Make an enquiry</a>
+            <a href={`/services/${parent.slug}`} class="btn-outline-dark"
+              >Back to {parent.title}</a
+            >
+          </div>
+        </div>
+
+        <aside class="md:col-span-5">
+          <div class="overflow-hidden border border-navy/10">
+            <img
+              src={service.image}
+              alt=""
+              class="aspect-[4/3] w-full object-cover"
+              width="900"
+              height="675"
+              loading="lazy"
+            />
+          </div>
+          <div class="mt-6 border border-navy/10 bg-cream p-6">
+            <p class="text-xs font-bold uppercase tracking-[0.14em] text-gold">
+              Contact
+            </p>
+            <p class="mt-3 text-sm leading-relaxed text-slate">
+              Speak with our Brunswick team about {service.title.toLowerCase()}.
+            </p>
+            <a href={site.phoneHref} class="mt-4 block font-semibold text-navy no-underline hover:text-gold"
+              >{site.phone}</a
+            >
+            <a href="/contact" class="btn-gold mt-5">Enquire now</a>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    {
+      siblings.length ? (
+        <section class="border-t border-navy/8 bg-cream py-14 md:py-20">
+          <div class="mx-auto max-w-7xl px-5 md:px-8">
+            <h2 class="font-display text-3xl font-semibold text-navy">
+              More under {parent.title}
+            </h2>
+            <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+              {siblings.map((item) => (
+                <a
+                  href={`/services/${parent.slug}/${item.slug}`}
+                  class="group border border-navy/10 bg-white p-5 no-underline transition-colors hover:border-gold"
+                >
+                  <h3 class="font-display text-xl font-semibold text-navy group-hover:text-gold-deep">
+                    {item.title}
+                  </h3>
+                  <p class="mt-2 text-sm leading-relaxed text-slate">
+                    {item.description}
+                  </p>
+                </a>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null
+    }
+
+    <CTA />
+  </main>
+  <Footer />
+</BaseLayout>

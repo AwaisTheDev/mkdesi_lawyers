@@ -12,15 +12,36 @@ export const site = {
     full: "705 Sydney Road, Brunswick VIC 3056",
     mapsLink:
       "https://www.google.com/maps/search/?api=1&query=705+Sydney+Road+Brunswick+VIC+3056",
+    mapsEmbed:
+      "https://www.google.com/maps?q=705+Sydney+Road+Brunswick+VIC+3056&output=embed",
+  },
+  sisterFirm: {
+    name: "Genuine Legal Group",
+    url: "https://www.genuinelegalgroup.com.au",
+    principal: "Mary Makdesi",
+    principalRole: "Director & Principal Lawyer",
+    description:
+      "Makdesi Lawyers works alongside Genuine Legal Group — a sister firm also led by Mary Makdesi. Together, the practices share a commitment to practical, client-focused legal advice and a trusted network of professionals across Victoria.",
   },
 };
 
 export const nav = [
-  { label: "About", href: "#about" },
-  { label: "Areas of Law", href: "#services" },
-  { label: "Resources", href: "#team" },
-  { label: "Reviews", href: "#reviews" },
-  { label: "Contact", href: "#contact" },
+  { label: "About", href: "/about" },
+  { label: "Our Team", href: "/team" },
+  { label: "Areas of Law", href: "/services" },
+  { label: "Location", href: "/location" },
+  { label: "Reviews", href: "/reviews" },
+  { label: "Contact", href: "/contact" },
+];
+
+export const footerNav = [
+  { label: "Home", href: "/" },
+  { label: "About", href: "/about" },
+  { label: "Our Team", href: "/team" },
+  { label: "Areas of Law", href: "/services" },
+  { label: "Location", href: "/location" },
+  { label: "Reviews", href: "/reviews" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export const trustItems = [
@@ -46,107 +67,160 @@ export const trustItems = [
   },
 ];
 
+export const about = {
+  headline: "A client-focused legal practice in Brunswick",
+  intro:
+    "Makdesi Lawyers provides practical, strategic legal services for individuals, families and businesses. Led by Principal Lawyer Mary Makdesi, we combine clear communication with determined advocacy — so clients understand their options and feel supported at every step.",
+  paragraphs: [
+    "Our approach begins with listening. We take time to understand each client’s circumstances, explain the legal landscape in plain language, and develop strategies that balance legal objectives with cost-effectiveness.",
+    "The firm has a strong conveyancing practice, supported by a specialist team dedicated to residential and commercial property transactions, alongside broader advice across estates, commercial matters, family law and criminal law.",
+    "Mary Makdesi is also Director and Principal Lawyer of our sister firm, Genuine Legal Group — expanding the network of trusted professionals we can draw on when specialised expertise is needed.",
+  ],
+  values: [
+    {
+      title: "Clear communication",
+      description:
+        "Straightforward advice about your options, so you can make informed decisions with confidence.",
+    },
+    {
+      title: "Personalised service",
+      description:
+        "Flexible communication and a tailored approach — recognising that legal matters often require responsiveness.",
+    },
+    {
+      title: "Practical strategies",
+      description:
+        "Legal objectives balanced with cost-effectiveness, focused on outcomes that matter to you.",
+    },
+  ],
+};
+
 /** Featured homepage cards matching the concept layout */
 export const featuredAreas = [
   {
     title: "Business & Commercial",
     description:
       "Contracts, disputes and commercial advice for businesses of all sizes.",
-    image: "/images/team-collab.webp",
-    href: "#contact",
+    image: "/images/services/commercial-law.webp",
+    href: "/services/commercial-law",
   },
   {
     title: "Property",
     description:
       "Conveyancing, property transactions and related legal support.",
-    image: "/images/office-exterior.webp",
-    href: "#contact",
+    image: "/images/services/property-and-conveyancing.webp",
+    href: "/services/property-conveyancing",
   },
   {
     title: "Family & Personal",
     description:
       "Family law, wills, estates and personal legal matters handled with care.",
-    image: "/images/consultation.webp",
-    href: "#contact",
+    image: "/images/services/family-law.webp",
+    href: "/services/family-law",
   },
   {
     title: "Disputes & Legal Matters",
     description:
       "Criminal, immigration, tax and negotiations with government bodies.",
-    image: "/images/reception-close.webp",
-    href: "#contact",
+    image: "/images/services/criminal-law.webp",
+    href: "/services/criminal-law",
   },
 ];
 
-export const practiceAreas = [
-  {
-    title: "Commercial Law",
-    description:
-      "Practical advice for businesses — contracts, disputes, and commercial dealings handled with clarity and care.",
-    icon: "briefcase",
-  },
-  {
-    title: "Criminal Law",
-    description:
-      "Early intervention and strong representation for police interviews, charges, and court matters.",
-    icon: "scales",
-  },
-  {
-    title: "Family Law",
-    description:
-      "Sensitive guidance through separation, parenting arrangements, and property settlements.",
-    icon: "users",
-  },
-  {
-    title: "Immigration Law",
-    description:
-      "Support navigating visas, citizenship, and matters involving Australian Border Force.",
-    icon: "globe",
-  },
-  {
-    title: "Negotiations with Government Bodies",
-    description:
-      "Experienced advocacy when dealing with government agencies, regulators, and public bodies.",
-    icon: "building",
-  },
-  {
-    title: "Power of Attorney",
-    description:
-      "Help deciding the right type of Power of Attorney and putting proper protections in place.",
-    icon: "signature",
-  },
-  {
-    title: "Property & Conveyancing",
-    description:
-      "From purchase to settlement — clear conveyancing and property law support for buyers and sellers.",
-    icon: "home",
-  },
-  {
-    title: "Tax Matters",
-    description:
-      "Guidance on tax-related legal issues, including dealings with the ATO and State Revenue.",
-    icon: "receipt",
-  },
-  {
-    title: "Wills & Estate Planning",
-    description:
-      "Wills, probate, and estate planning so your wishes are clear and your family is protected.",
-    icon: "scroll",
-  },
-];
+export {
+  practiceAreas,
+  getPracticeArea,
+  getSubService,
+  getAllSubServicePaths,
+} from "./services";
+export type { PracticeArea, SubService } from "./services";
 
 export const team = [
   {
+    slug: "mary-makdesi",
     name: "Mary Makdesi",
-    role: "Principal",
+    role: "Principal Lawyer",
     initials: "MM",
     photo: "/images/mary.webp",
+    bio: "Principal Lawyer of Makdesi Lawyers and Genuine Legal Group. An accomplished litigator advising across estate planning and probate, commercial and retail leasing, commercial contracts, family law, and criminal law.",
+    focus: [
+      "Estate planning & probate",
+      "Commercial & retail leasing",
+      "Commercial contracts",
+      "Family law",
+      "Criminal law",
+    ],
+    paragraphs: [
+      "Mary Makdesi is the Principal Lawyer of Makdesi Lawyers and Genuine Legal Group. She leads a dedicated team of experienced legal professionals who are committed to delivering practical, strategic, and client-focused legal services.",
+      "With extensive experience in private practice, Mary is an accomplished litigator who advises and represents clients across a broad range of legal matters. Her primary areas of practice include estate planning and probate, commercial and retail leasing, commercial contracts, family law, and criminal law.",
+      "The firm also has a strong conveyancing practice, supported by a specialist team dedicated exclusively to residential and commercial property transactions, ensuring clients receive efficient and seamless property services.",
+      "Mary’s broad legal expertise makes her a trusted first point of contact for individuals, families, and businesses seeking legal guidance. She has built a strong network of trusted professionals and industry experts, allowing her to draw on specialised knowledge whenever required to achieve the best possible outcomes for her clients.",
+      "Mary believes that effective legal representation begins with clear communication. She takes the time to understand each client’s circumstances, provides straightforward advice about their options, and develops practical strategies that balance legal objectives with cost-effectiveness.",
+      "As Principal Lawyer, Mary is committed to providing a personalised and accessible service. She is flexible in how and when she communicates with clients, recognising that legal matters often require responsiveness and a tailored approach.",
+      "Known for her compassionate yet determined approach, Mary is a strong advocate who is prepared to tackle complex and challenging legal issues. At the same time, she understands that many clients come to her during some of the most difficult periods of their lives, and she approaches every matter with empathy, respect, and genuine care.",
+    ],
   },
   {
+    slug: "nizar-makdesi",
+    name: "Nizar Makdesi",
+    role: "Associate Lawyer",
+    initials: "NZ",
+    photo: "/images/team-associate.webp",
+    bio: "Juris Doctor (Monash) and licensed in Victoria. Focused on estate planning and probate, commercial law, criminal matters, and family law — with a strong foundation in IT, consumer law, and intellectual property.",
+    focus: [
+      "Estate planning & probate",
+      "Commercial law",
+      "Criminal law",
+      "Family law",
+      "Consumer law & IP",
+    ],
+    paragraphs: [
+      "Nizar obtained his Juris Doctor of Law from Monash University and is licensed to practice Law in Victoria, Australia. He also holds a Bachelor of Business and Master of Information Systems from the University of Melbourne.",
+      "Nizar is passionate about estate planning and probate matters, commercial law, criminal matters, and family law. He has a proven track record of delivering high-quality legal services, earning him a reputation for his professionalism and integrity.",
+      "Moreover, he has a strong foundation in Information Technology and a keen understanding of Consumer Law and Intellectual Property.",
+      "He approaches every file and client with his passion for the law, unwavering commitment to getting outcomes, and meticulous attention to the small print.",
+      "Nizar is adept at navigating complex legal issues and providing clear, practical advice to his clients. He is committed to staying abreast of legal developments and continuously expanding his knowledge to better serve clients' needs.",
+      "Nizar understands that in order to provide clients with genuine support, they require both strategic and effective legal guidance in both commercial and personal matters, as well as an ally who can help them see the significance of their own unique requirements and aspirations.",
+    ],
+  },
+  {
+    slug: "clara-gallo",
     name: "Clara Gallo",
-    role: "Legal Secretary",
+    role: "Legal Administration",
     initials: "CG",
     photo: "/images/clara.webp",
+    bio: "With the firm since inception, Clara oversees legal administration, file management, and day-to-day operations so every matter runs efficiently from start to finish.",
+    focus: [
+      "Legal administration",
+      "File management",
+      "Client service",
+      "Office operations",
+    ],
+    paragraphs: [
+      "Clara Gallo has been an integral part of Makdesi Lawyers since the firm's inception, having worked alongside Mary Makdesi for many years across previous legal practices. Her extensive knowledge of the firm's operations and commitment to client service make her an invaluable member of our team.",
+      "Clara is responsible for overseeing the firm's legal administration, file management, and day-to-day office operations, ensuring every matter is managed efficiently from commencement through to completion. She works closely with our legal team to maintain organised files, streamline workflows, and ensure clients receive timely communication and exceptional service throughout their matter.",
+      "As the first point of contact for many of our clients, Clara is known for her warm, approachable manner and her ability to make clients feel welcome and supported from their very first interaction with the firm. She is dedicated to ensuring each client experience is professional, responsive, and seamless.",
+      "With her expertise in file management, office systems, and legal administration, Clara plays a vital role in ensuring our lawyers can focus on delivering quality legal outcomes while every client matter is handled with care, efficiency, and attention to detail.",
+    ],
+  },
+  {
+    slug: "natascia-makdesi",
+    name: "Natascia Makdesi",
+    role: "Administration & Legal Secretary",
+    initials: "NA",
+    photo: "/images/natascia.webp",
+    bio: "Provides administrative and legal secretarial support — client communications, file management, document preparation, and diary coordination — so every client receives a responsive, welcoming experience.",
+    focus: [
+      "Client communications",
+      "File management",
+      "Document preparation",
+      "Diary & court bookings",
+    ],
+    paragraphs: [
+      "Natascia Makdesi is a valued member of the Makdesi Lawyers team, providing the administrative and legal secretarial support that helps ensure the firm operates efficiently and every client receives a professional, responsive, and welcoming experience.",
+      "Working closely with our solicitors, Natascia assists in the day-to-day management of client matters from commencement through to completion. Her responsibilities include client communications, file management, preparation and formatting of legal documents and correspondence, court and settlement bookings, diary management, and coordinating the administrative requirements of each matter to ensure deadlines and appointments are met.",
+      "Natascia takes pride in providing reliable and efficient support to both our clients and legal team. Her proactive approach, excellent attention to detail, and commitment to maintaining well-managed files and clear communication help ensure each matter progresses smoothly and that clients receive a high standard of service throughout their legal journey.",
+    ],
   },
 ];
 
@@ -167,3 +241,7 @@ export const reviews = [
     name: "John",
   },
 ];
+
+export function getTeamMember(slug: string) {
+  return team.find((member) => member.slug === slug);
+}
