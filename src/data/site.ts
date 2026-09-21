@@ -177,7 +177,7 @@ export const team = [
     name: "Nizar Makdesi",
     role: "Associate Lawyer",
     initials: "NZ",
-    photo: "/images/team-associate.webp",
+    photo: "/images/nizar.webp",
     bio: "Juris Doctor (Monash) and licensed in Victoria. Focused on estate planning and probate, commercial law, criminal matters, and family law — with a strong foundation in IT, consumer law, and intellectual property.",
     focus: [
       "Estate planning & probate",
