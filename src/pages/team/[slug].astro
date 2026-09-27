@@ -52,7 +52,7 @@ const others = team.filter((m) => m.slug !== member.slug);
     <section class="bg-white py-14 md:py-20">
       <div class="mx-auto grid max-w-7xl gap-12 px-5 md:grid-cols-12 md:gap-16 md:px-8">
         <div class="md:col-span-5">
-          <div class="overflow-hidden border border-navy/10 bg-cream">
+          <div class="overflow-hidden border border-navy/10 bg-white">
             {
               member.photo ? (
                 <img
@@ -145,7 +145,7 @@ const others = team.filter((m) => m.slug !== member.slug);
                 href={`/team/${other.slug}`}
                 class="group block no-underline"
               >
-                <div class="overflow-hidden border border-navy/10 bg-cream">
+                <div class="overflow-hidden border border-navy/10 bg-white">
                   {other.photo ? (
                     <img
                       src={other.photo}

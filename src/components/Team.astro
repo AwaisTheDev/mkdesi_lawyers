@@ -16,147 +16,50 @@ import { team } from "../data/site";
         </p>
       </div>
 
-      <div class="flex shrink-0 flex-col items-stretch gap-4 sm:flex-row sm:items-center md:flex-col md:items-end lg:flex-row lg:items-center">
-        <a href="/team" class="btn-gold whitespace-nowrap">
-          View all profiles
-        </a>
-        <div class="flex items-center gap-3">
-          <button
-            type="button"
-            class="flex h-11 w-11 items-center justify-center border border-white/25 text-white transition-colors hover:border-gold hover:text-gold"
-            data-team-prev
-            aria-label="Previous team members"
-          >
-            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.75">
-              <path d="M15 6 9 12l6 6" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </button>
-          <button
-            type="button"
-            class="flex h-11 w-11 items-center justify-center border border-white/25 text-white transition-colors hover:border-gold hover:text-gold"
-            data-team-next
-            aria-label="Next team members"
-          >
-            <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="1.75">
-              <path d="m9 6 6 6-6 6" stroke-linecap="round" stroke-linejoin="round"></path>
-            </svg>
-          </button>
-        </div>
-      </div>
+      <a href="/team" class="btn-gold shrink-0 whitespace-nowrap self-start md:self-auto">
+        View all profiles
+      </a>
     </div>
 
-    <div class="mt-12" data-team-slider>
-      <div class="overflow-hidden">
-        <div
-          class="flex gap-6 transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
-          data-team-track
-          style="transform: translateX(0px)"
-        >
-          {
-            team.map((member) => (
-              <article
-                class="w-[min(100%,320px)] shrink-0 sm:w-[calc(50%-0.75rem)] lg:w-[calc(25%-1.125rem)]"
-                data-team-card
-              >
-                <a
-                  href={`/team/${member.slug}`}
-                  class="group block text-inherit no-underline"
-                >
-                  <div class="overflow-hidden border border-white/15 bg-navy-soft">
-                    {member.photo ? (
-                      <img
-                        src={member.photo}
-                        alt={`${member.name}, ${member.role}`}
-                        class="aspect-[4/5] w-full object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
-                        width="900"
-                        height="1125"
-                        loading="lazy"
-                      />
-                    ) : (
-                      <div class="flex aspect-[4/5] items-center justify-center bg-navy-soft font-display text-4xl text-gold/70">
-                        {member.initials}
-                      </div>
-                    )}
+    <div class="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        team.map((member) => (
+          <article>
+            <a
+              href={`/team/${member.slug}`}
+              class="group block text-inherit no-underline"
+            >
+              <div class="overflow-hidden border border-white/15 bg-white">
+                {member.photo ? (
+                  <img
+                    src={member.photo}
+                    alt={`${member.name}, ${member.role}`}
+                    class="aspect-[4/5] w-full bg-white object-cover object-top transition-transform duration-700 group-hover:scale-[1.03]"
+                    width="900"
+                    height="1125"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="flex aspect-[4/5] items-center justify-center bg-white font-display text-4xl text-gold/70">
+                    {member.initials}
                   </div>
-                  <h3 class="mt-4 font-display text-xl font-semibold group-hover:text-gold">
-                    {member.name}
-                  </h3>
-                  <p class="mt-1 text-sm tracking-wide text-gold">{member.role}</p>
-                  <p class="mt-3 text-sm leading-relaxed text-white/55 line-clamp-3">
-                    {member.bio}
-                  </p>
-                  <span class="mt-4 inline-flex items-center gap-1.5 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-gold">
-                    View profile
-                    <span aria-hidden="true">→</span>
-                  </span>
-                </a>
-              </article>
-            ))
-          }
-        </div>
-      </div>
-
-      <div class="mt-8 flex items-center justify-center gap-2" data-team-dots></div>
+                )}
+              </div>
+              <h3 class="mt-4 font-display text-xl font-semibold group-hover:text-gold">
+                {member.name}
+              </h3>
+              <p class="mt-1 text-sm tracking-wide text-gold">{member.role}</p>
+              <p class="mt-3 text-sm leading-relaxed text-white/55 line-clamp-3">
+                {member.bio}
+              </p>
+              <span class="mt-4 inline-flex items-center gap-1.5 text-[0.72rem] font-bold uppercase tracking-[0.12em] text-gold">
+                View profile
+                <span aria-hidden="true">→</span>
+              </span>
+            </a>
+          </article>
+        ))
+      }
     </div>
   </div>
 </section>
-
-<script>
-  const root = document.querySelector("[data-team-slider]");
-  if (root) {
-    const track = root.querySelector("[data-team-track]") as HTMLElement | null;
-    const cards = Array.from(root.querySelectorAll("[data-team-card]")) as HTMLElement[];
-    const dotsWrap = root.querySelector("[data-team-dots]");
-    const prevBtn = document.querySelector("[data-team-prev]");
-    const nextBtn = document.querySelector("[data-team-next]");
-    let index = 0;
-
-    const perView = () => {
-      if (window.matchMedia("(min-width: 1024px)").matches) return 4;
-      if (window.matchMedia("(min-width: 640px)").matches) return 2;
-      return 1;
-    };
-
-    const maxIndex = () => Math.max(0, cards.length - perView());
-
-    const step = () => {
-      if (!cards[0] || !track) return 0;
-      const style = getComputedStyle(track);
-      const gap = parseFloat(style.columnGap || style.gap || "0") || 0;
-      return cards[0].getBoundingClientRect().width + gap;
-    };
-
-    const renderDots = () => {
-      if (!dotsWrap) return;
-      dotsWrap.innerHTML = "";
-      const total = maxIndex() + 1;
-      if (total <= 1) {
-        dotsWrap.classList.add("hidden");
-        return;
-      }
-      dotsWrap.classList.remove("hidden");
-      for (let i = 0; i < total; i++) {
-        const dot = document.createElement("button");
-        dot.type = "button";
-        dot.setAttribute("aria-label", `Go to team slide ${i + 1}`);
-        dot.className = `h-2.5 rounded-full transition-all ${
-          i === index ? "w-6 bg-gold" : "w-2.5 bg-white/25"
-        }`;
-        dot.addEventListener("click", () => go(i));
-        dotsWrap.appendChild(dot);
-      }
-    };
-
-    const go = (i: number) => {
-      index = Math.min(Math.max(i, 0), maxIndex());
-      if (track) track.style.transform = `translateX(-${index * step()}px)`;
-      renderDots();
-    };
-
-    prevBtn?.addEventListener("click", () => go(index - 1));
-    nextBtn?.addEventListener("click", () => go(index + 1));
-    window.addEventListener("resize", () => go(Math.min(index, maxIndex())));
-
-    go(0);
-  }
-</script>
