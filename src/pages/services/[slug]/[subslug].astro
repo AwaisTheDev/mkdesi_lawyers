@@ -128,7 +128,10 @@ const siblings = (parent.children ?? []).filter((c) => c.slug !== service.slug);
             <p class="mt-3 text-sm leading-relaxed text-slate">
               Speak with our Brunswick team about {service.title.toLowerCase()}.
             </p>
-            <a href={site.phoneHref} class="mt-4 block font-semibold text-navy no-underline hover:text-gold"
+            <a href={site.landlineHref} class="mt-4 block font-semibold text-navy no-underline hover:text-gold"
+              >{site.landline}</a
+            >
+            <a href={site.phoneHref} class="mt-2 block font-semibold text-navy no-underline hover:text-gold"
               >{site.phone}</a
             >
             <a href="/contact" class="btn-gold mt-5">Enquire now</a>

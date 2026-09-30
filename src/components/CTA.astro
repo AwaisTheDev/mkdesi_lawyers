@@ -22,9 +22,13 @@ import Icon from "./Icon.astro";
     </h2>
     <div class="mt-9 flex flex-wrap items-center justify-center gap-3">
       <a href="/contact" class="btn-gold">Book a Consultation</a>
+      <a href={site.landlineHref} class="btn-outline-light">
+        <Icon name="phone" class="h-4 w-4" />
+        {site.landline}
+      </a>
       <a href={site.phoneHref} class="btn-outline-light">
         <Icon name="phone" class="h-4 w-4" />
-        Call {site.phone}
+        {site.phone}
       </a>
     </div>
   </div>

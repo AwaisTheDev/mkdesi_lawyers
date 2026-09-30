@@ -35,7 +35,11 @@ const { showHeading = true } = Astro.props;
             <Icon name="phone" class="h-5 w-5" />
           </span>
           <div>
-            <p class="text-xs font-bold uppercase tracking-[0.12em] text-mist">Phone</p>
+            <p class="text-xs font-bold uppercase tracking-[0.12em] text-mist">Office</p>
+            <a href={site.landlineHref} class="mt-1 block text-lg text-navy no-underline hover:text-gold"
+              >{site.landline}</a
+            >
+            <p class="mt-3 text-xs font-bold uppercase tracking-[0.12em] text-mist">Mobile</p>
             <a href={site.phoneHref} class="mt-1 block text-lg text-navy no-underline hover:text-gold"
               >{site.phone}</a
             >

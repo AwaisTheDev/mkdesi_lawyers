@@ -99,9 +99,13 @@ const others = team.filter((m) => m.slug !== member.slug);
 
           <div class="mt-10 flex flex-wrap gap-3">
             <a href="/contact" class="btn-gold">Speak with our team</a>
+            <a href={site.landlineHref} class="btn-outline-dark">
+              <Icon name="phone" class="h-4 w-4" />
+              {site.landline}
+            </a>
             <a href={site.phoneHref} class="btn-outline-dark">
               <Icon name="phone" class="h-4 w-4" />
-              Call {site.phone}
+              {site.phone}
             </a>
           </div>
         </div>

@@ -157,9 +157,13 @@ function isActive(href: string) {
     </nav>
 
     <div class="flex items-center gap-3">
+      <a href={site.landlineHref} class="btn-gold hidden sm:inline-flex">
+        <Icon name="phone" class="h-4 w-4" />
+        {site.landline}
+      </a>
       <a href={site.phoneHref} class="btn-gold hidden sm:inline-flex">
         <Icon name="phone" class="h-4 w-4" />
-        Call {site.phone}
+        {site.phone}
       </a>
       <button
         id="menu-toggle"
@@ -283,9 +287,13 @@ function isActive(href: string) {
           ),
         )
       }
-      <a href={site.phoneHref} class="btn-gold mt-4 self-start">
+      <a href={site.landlineHref} class="btn-gold mt-4 self-start">
         <Icon name="phone" class="h-4 w-4" />
-        Call {site.phone}
+        {site.landline}
+      </a>
+      <a href={site.phoneHref} class="btn-gold mt-3 self-start">
+        <Icon name="phone" class="h-4 w-4" />
+        {site.phone}
       </a>
     </nav>
   </div>

@@ -1,4 +1,6 @@
 ---
+import { site } from "../data/site";
+
 interface Props {
   class?: string;
   /** on-light = dark logo for white backgrounds; on-dark = white logo */
@@ -13,7 +15,7 @@ const {
 
 <img
   src="/logo.png"
-  alt="Makdesi And Associates Lawyers"
+  alt={site.name}
   class:list={[
     "block max-w-none object-contain",
     variant === "on-light" && "brightness-0",

@@ -19,6 +19,10 @@ import { site } from "../data/site";
       </h1>
       <p class="mt-4 text-base leading-relaxed text-slate">
         We’ll respond as soon as we can. For urgent matters, call{" "}
+        <a href={site.landlineHref} class="font-semibold text-navy no-underline hover:text-gold"
+          >{site.landline}</a
+        >
+        {" "}or{" "}
         <a href={site.phoneHref} class="font-semibold text-navy no-underline hover:text-gold"
           >{site.phone}</a
         >.

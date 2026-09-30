@@ -1,8 +1,10 @@
 export const site = {
-  name: "Makdesi And Associates Lawyers",
+  name: "Makdesi & Associates Lawyers",
   shortName: "Makdesi",
   tagline: "High Quality, Cost Effective Legal Services",
   url: "https://makdesilawyers.com.au",
+  landline: "03 8708 0001",
+  landlineHref: "tel:+61387080001",
   phone: "0450 706 100",
   phoneHref: "tel:+61450706100",
   email: "mary@makdesilawyers.com.au",
@@ -82,7 +84,7 @@ export const trustItems = [
 export const about = {
   headline: "A client-focused legal practice in Brunswick",
   intro:
-    "Makdesi And Associates Lawyers are dedicated to providing friendly, experienced guidance — helping you navigate legal matters including estate planning, probate, wills, business and property law. We focus on getting the results you want, efficiently and cost-effectively, whilst building long and lasting relationships with our clients.",
+    "Makdesi & Associates Lawyers are dedicated to providing friendly, experienced guidance — helping you navigate legal matters including estate planning, probate, wills, business and property law. We focus on getting the results you want, efficiently and cost-effectively, whilst building long and lasting relationships with our clients.",
   paragraphs: [
     "As you experience life’s changes, we’ll be there for you when you need advice. Our approach begins with listening: we take time to understand each client’s circumstances, explain the legal landscape in plain language, and develop strategies that balance legal objectives with cost-effectiveness.",
     "The firm has a strong conveyancing practice, supported by a specialist team dedicated to residential and commercial property transactions, alongside broader advice across estates, commercial matters, family law and criminal law.",

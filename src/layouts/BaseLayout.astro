@@ -24,7 +24,7 @@ const schema = {
   "@type": ["LegalService", "Attorney"],
   name: site.name,
   url: site.url,
-  telephone: site.phone,
+  telephone: [site.landline, site.phone],
   email: site.email,
   image: ogImage,
   description,

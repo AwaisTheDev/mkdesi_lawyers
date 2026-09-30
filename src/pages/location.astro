@@ -10,14 +10,14 @@ import { site } from "../data/site";
 
 <BaseLayout
   title={`Our Location | ${site.name}`}
-  description={`Visit Makdesi Lawyers at ${site.address.full}. Call ${site.phone} or email ${site.email}.`}
+  description={`Visit ${site.name} at ${site.address.full}. Call ${site.landline} or ${site.phone}, or email ${site.email}.`}
 >
   <Header />
   <main>
     <PageHero
       eyebrow="Our location"
       title="Visit us in Brunswick"
-      description="Makdesi And Associates Lawyers — conveniently located on Sydney Road."
+      description={`${site.name} — conveniently located on Sydney Road.`}
     />
 
     <section class="bg-white py-16 md:py-24">
@@ -42,7 +42,15 @@ import { site } from "../data/site";
               </span>
               <div>
                 <p class="text-xs font-bold uppercase tracking-[0.12em] text-mist">
-                  Telephone
+                  Office
+                </p>
+                <a
+                  href={site.landlineHref}
+                  class="mt-1 block text-lg text-navy no-underline hover:text-gold"
+                  >{site.landline}</a
+                >
+                <p class="mt-3 text-xs font-bold uppercase tracking-[0.12em] text-mist">
+                  Mobile
                 </p>
                 <a
                   href={site.phoneHref}

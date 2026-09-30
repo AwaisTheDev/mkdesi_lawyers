@@ -82,9 +82,13 @@ const related = practiceAreas.filter((a) => a.slug !== area.slug).slice(0, 3);
           </p>
           <div class="mt-10 flex flex-wrap gap-3">
             <a href="/contact" class="btn-gold">Make an enquiry</a>
+            <a href={site.landlineHref} class="btn-outline-dark">
+              <Icon name="phone" class="h-4 w-4" />
+              {site.landline}
+            </a>
             <a href={site.phoneHref} class="btn-outline-dark">
               <Icon name="phone" class="h-4 w-4" />
-              Call {site.phone}
+              {site.phone}
             </a>
           </div>
         </div>
@@ -99,6 +103,11 @@ const related = practiceAreas.filter((a) => a.slug !== area.slug).slice(0, 3);
               Victoria on {area.title.toLowerCase()} matters.
             </p>
             <ul class="mt-6 space-y-3 text-sm text-navy">
+              <li>
+                <a href={site.landlineHref} class="font-semibold no-underline hover:text-gold"
+                  >{site.landline}</a
+                >
+              </li>
               <li>
                 <a href={site.phoneHref} class="font-semibold no-underline hover:text-gold"
                   >{site.phone}</a

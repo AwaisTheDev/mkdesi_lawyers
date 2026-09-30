@@ -52,6 +52,10 @@ const hasSocial = Boolean(site.social.facebook || site.social.linkedin);
         <ul class="mt-4 space-y-3">
           <li class="flex items-center gap-2.5 text-sm text-white/75">
             <Icon name="phone" class="h-4 w-4 text-gold" />
+            <a href={site.landlineHref} class="no-underline hover:text-gold">{site.landline}</a>
+          </li>
+          <li class="flex items-center gap-2.5 text-sm text-white/75">
+            <Icon name="phone" class="h-4 w-4 text-gold" />
             <a href={site.phoneHref} class="no-underline hover:text-gold">{site.phone}</a>
           </li>
           <li class="flex items-center gap-2.5 text-sm text-white/75">
