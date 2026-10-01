@@ -157,18 +157,20 @@ function isActive(href: string) {
     </nav>
 
     <div class="flex items-center gap-3">
-      <a href={site.landlineHref} class="btn-gold hidden sm:inline-flex">
-        <Icon name="phone" class="h-4 w-4" />
-        {site.landline}
-      </a>
-      <a href={site.phoneHref} class="btn-gold hidden sm:inline-flex">
-        <Icon name="phone" class="h-4 w-4" />
-        {site.phone}
-      </a>
+      <div class="hidden items-center gap-3 lg:flex">
+        <a href={site.landlineHref} class="btn-gold whitespace-nowrap">
+          <Icon name="phone" class="h-4 w-4" />
+          {site.landline}
+        </a>
+        <a href={site.phoneHref} class="btn-gold whitespace-nowrap">
+          <Icon name="phone" class="h-4 w-4" />
+          {site.phone}
+        </a>
+      </div>
       <button
         id="menu-toggle"
         type="button"
-        class="flex h-11 w-11 items-center justify-center border border-navy/15 text-navy lg:hidden"
+        class="flex h-11 w-11 shrink-0 items-center justify-center border border-navy/15 text-navy lg:hidden"
         aria-expanded="false"
         aria-controls="mobile-menu"
         aria-label="Open menu"
@@ -287,12 +289,12 @@ function isActive(href: string) {
           ),
         )
       }
-      <a href={site.landlineHref} class="btn-gold mt-4 self-start">
-        <Icon name="phone" class="h-4 w-4" />
+      <a href={site.landlineHref} class="btn-gold mt-4 min-w-0 whitespace-nowrap">
+        <Icon name="phone" class="h-4 w-4 shrink-0" />
         {site.landline}
       </a>
-      <a href={site.phoneHref} class="btn-gold mt-3 self-start">
-        <Icon name="phone" class="h-4 w-4" />
+      <a href={site.phoneHref} class="btn-gold mt-3 min-w-0 whitespace-nowrap">
+        <Icon name="phone" class="h-4 w-4 shrink-0" />
         {site.phone}
       </a>
     </nav>

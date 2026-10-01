@@ -77,6 +77,13 @@
     transform: translateY(-1px);
   }
 
+  #mobile-menu .btn-gold {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    padding-inline: 1rem;
+  }
+
   .btn-outline-light {
     display: inline-flex;
     align-items: center;
